@@ -12,7 +12,7 @@ const Header = () => {
           className="border-b border-gray-300 text-blue-600 font-semibold hover:border-blue-400"
           href="https://github.com/neysidev"
           target="_blank"
-          rel="noopener"
+          rel="noreferrer"
         >
           Mehdi Neysi
         </a>
