@@ -14,7 +14,7 @@ export const tableData = [
     title: 'Online shop project',
     amount: 200,
     type: 'income',
-    category: [{ name: 'freelancing', color: 'pink' }],
+    category: [{ id: 1, name: 'freelancing', color: 'pink' }],
     createdAt: 'Feb 06, 2021'
   },
   {
@@ -22,7 +22,7 @@ export const tableData = [
     title: 'Buy a laptop',
     amount: 1000,
     type: 'cost',
-    category: [{ name: 'apple', color: 'gray' }],
+    category: [{ id: 1, name: 'apple', color: 'gray' }],
     createdAt: 'Fab 15, 2021'
   }
 ]

@@ -21,6 +21,7 @@ const TableData = ({ id, title, amount, type, category, createdAt }) => {
       <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
         {category.map(item => (
           <span
+            key={item.id}
             className={`px-2 mr-1 inline-flex text-xs leading-5 font-semibold rounded-full bg-${item.color}-100 text-${item.color}-800`}
           >
             {item.name}
