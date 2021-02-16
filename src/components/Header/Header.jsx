@@ -9,7 +9,7 @@ const Header = () => {
       <p className="text-lg leading-10 text-gray-600">
         Created by{' '}
         <a
-          className="border-b border-gray-300 text-blue-600 font-semibold hover:border-blue-400"
+          className="border-b border-gray-300 text-indigo-600 font-semibold hover:border-indigo-400"
           href="https://github.com/neysidev"
           target="_blank"
           rel="noreferrer"
