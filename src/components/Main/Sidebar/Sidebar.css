@@ -1,0 +1,13 @@
+.sidebar {
+  transform: translateX(100%);
+}
+.sidebar .simplebar-content {
+  height: 100% !important;
+}
+
+@media screen and (min-width: 768px) {
+  .sidebar {
+    width: 30vw;
+    min-width: 450px;
+  }
+}
