@@ -27,9 +27,16 @@ const Main = () => {
     const value = 50 - event.target.value.length
     totalCharsRef.current.textContent = value
 
-    value <= 20
-      ? totalCharsRef.current.classList.add('text-red-500')
-      : totalCharsRef.current.classList.remove('text-red-500')
+    if (value <= 0) {
+      return totalCharsRef.current.classList.replace('text-yellow-500', 'text-red-500')
+    }
+
+    if (value <= 20) {
+      totalCharsRef.current.classList.add('text-yellow-500')
+      return totalCharsRef.current.classList.replace('text-red-500', 'text-yellow-500')
+    }
+
+    totalCharsRef.current.classList.remove('text-yellow-500')
   }
 
   return (
