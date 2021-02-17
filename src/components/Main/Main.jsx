@@ -33,12 +33,12 @@ const Main = () => {
   }
 
   return (
-    <div className="py-8">
-      <header className="flex items-center justify-between mb-3 text-gray-600">
-        <div className="flex items-center">
-          <button className="mr-1 py-1 px-2 rounded hover:bg-gray-200 flex items-center focus:outline-none">
+    <main id="main">
+      <header className="main__header">
+        <div className="header__actions">
+          <button className="action__button">
             <svg
-              className="w-4 h-4 mr-1"
+              className="action__button--icon"
               fill="none"
               stroke="currentColor"
               viewBox="0 0 24 24"
@@ -53,9 +53,9 @@ const Main = () => {
             </svg>
             Filter
           </button>
-          <button className="mr-1 py-1 px-2 rounded hover:bg-gray-200 flex items-center focus:outline-none">
+          <button className="action__button">
             <svg
-              className="w-4 h-4 mr-1"
+              className="action__button--icon"
               fill="none"
               stroke="currentColor"
               viewBox="0 0 24 24"
@@ -70,9 +70,9 @@ const Main = () => {
             </svg>
             Sort
           </button>
-          <button className="mr-1 py-1 px-2 rounded hover:bg-gray-200 flex items-center focus:outline-none">
+          <button className="action__button">
             <svg
-              className="w-4 h-4 mr-1"
+              className="action__button--icon"
               fill="none"
               stroke="currentColor"
               viewBox="0 0 24 24"
@@ -89,12 +89,9 @@ const Main = () => {
           </button>
         </div>
         <div>
-          <button
-            onClick={showSidebar}
-            className="py-1 px-2 rounded hover:bg-gray-200 flex items-center focus:outline-none"
-          >
+          <button onClick={showSidebar} className="action__button mr-0">
             <svg
-              className="w-5 h-5 mr-1"
+              className="action__button--icon"
               fill="none"
               stroke="currentColor"
               viewBox="0 0 24 24"
@@ -256,7 +253,7 @@ const Main = () => {
           </SimpleBar>
         </div>
       </form>
-    </div>
+    </main>
   )
 }
 

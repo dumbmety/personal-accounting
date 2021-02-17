@@ -7,13 +7,30 @@
   @apply mb-5;
 }
 .main-header__title {
-  @apply text-5xl font-semibold tracking-tigh py-2;
+  @apply text-5xl font-semibold py-2;
 }
 .main-header__text {
   @apply text-lg leading-10 text-gray-600;
 }
 .main-header__text--link {
   @apply border-b border-gray-300 text-indigo-600 font-semibold hover:border-indigo-400;
+}
+
+/* Main */
+#main {
+  @apply py-8;
+}
+.main__header {
+  @apply flex items-center justify-between mb-3 text-gray-600;
+}
+.header__actions {
+  @apply flex items-center;
+}
+.action__button {
+  @apply mr-1 py-1 px-2 rounded hover:bg-gray-200 flex items-center focus:outline-none;
+}
+.action__button--icon {
+  @apply w-4 h-4 mr-1;
 }
 
 /* Sidebar */
