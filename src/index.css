@@ -2,6 +2,20 @@
 @tailwind components;
 @tailwind utilities;
 
+/* Main Header */
+#main-header {
+  @apply mb-5;
+}
+.main-header__title {
+  @apply text-5xl font-semibold tracking-tigh py-2;
+}
+.main-header__text {
+  @apply text-lg leading-10 text-gray-600;
+}
+.main-header__text--link {
+  @apply border-b border-gray-300 text-indigo-600 font-semibold hover:border-indigo-400;
+}
+
 /* Sidebar */
 .sidebar-overly {
   transition: translate 0.3s linear;
