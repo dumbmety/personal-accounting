@@ -1,7 +1,7 @@
 import React, { useRef } from 'react'
 
-import './Sidebar.css'
 import SimpleBar from 'simplebar-react'
+
 import Table from './Table/Table'
 
 const Main = () => {
@@ -187,12 +187,38 @@ const Main = () => {
                   >
                     Type
                   </label>
-                  <input
-                    id="type"
-                    type="text"
-                    className="block border border-gray-200 rounded shadow-sm py-1 px-3 w-full transition duration-200 ease-in-out focus:outline-none focus:border-gray-400"
-                  />
-                  <small className="text-gray-500">Choose a type</small>
+                  <div className="flex items-center justify-between overflow-hidden rounded">
+                    <div className="flex-1 text-center text-sm">
+                      <input
+                        id="income"
+                        className="type-input hidden"
+                        type="radio"
+                        value="income"
+                        name="type"
+                      />
+                      <label
+                        htmlFor="income"
+                        className="type-label inline-block py-2 w-full cursor-pointer hover:bg-gray-100 transition duration-300 ease-in-out border border-gray-200"
+                      >
+                        Income
+                      </label>
+                    </div>
+                    <div className="flex-1 text-center text-sm">
+                      <input
+                        id="cost"
+                        className="type-input hidden"
+                        type="radio"
+                        value="cost"
+                        name="type"
+                      />
+                      <label
+                        htmlFor="cost"
+                        className="type-label inline-block py-2 w-full cursor-pointer hover:bg-gray-100 transition duration-300 ease-in-out border border-l-0 border-gray-200"
+                      >
+                        Cost
+                      </label>
+                    </div>
+                  </div>
                 </div>
                 <div className="mb-5">
                   <label
