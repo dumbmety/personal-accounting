@@ -232,7 +232,9 @@ const Main = () => {
                     type="text"
                     className="block border border-gray-200 rounded shadow-sm py-1 px-3 w-full transition duration-200 ease-in-out focus:outline-none focus:border-gray-400"
                   />
-                  <small className="text-gray-500">Enter your categories</small>
+                  <small className="text-gray-500">
+                    Separate categories with commas ","
+                  </small>
                 </div>
               </div>
               <footer className="p-6 border-t border-gray-100 bg-gray-50 flex items-center justify-end">
