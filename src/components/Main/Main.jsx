@@ -7,6 +7,7 @@ import Table from './Table/Table'
 const Main = () => {
   const sidebarRef = useRef(null)
   const sidebarOverlyRef = useRef(null)
+  const totalCharsRef = useRef(null)
 
   const showSidebar = () => {
     sidebarOverlyRef.current.classList.replace('hidden', 'visible')
@@ -16,6 +17,19 @@ const Main = () => {
   const hideSidebar = () => {
     sidebarOverlyRef.current.classList.replace('visible', 'hidden')
     sidebarRef.current.style.transform = 'translateX(100px)'
+  }
+
+  const handleAddItem = () => {
+    console.log('handleAddItem')
+  }
+
+  const handleTitleInput = event => {
+    const value = 50 - event.target.value.length
+    totalCharsRef.current.textContent = value
+
+    value <= 20
+      ? totalCharsRef.current.classList.add('text-red-500')
+      : totalCharsRef.current.classList.remove('text-red-500')
   }
 
   return (
@@ -98,7 +112,8 @@ const Main = () => {
         </div>
       </header>
       <Table />
-      <div
+      <form
+        onSubmit={handleAddItem}
         ref={sidebarOverlyRef}
         className="sidebar-overly fixed top-0 right-0 w-full h-full z-10 hidden"
         style={{ background: 'rgb(0, 0, 0, 0.3)' }}
@@ -112,6 +127,7 @@ const Main = () => {
               <header className="flex items-center justify-between p-6 bg-gray-50 border-b border-gray-100">
                 <h2 className="text-lg font-semibold">Add new item</h2>
                 <button
+                  type="button"
                   onClick={hideSidebar}
                   className="text-gray-400 hover:text-gray-600 focus:text-gray-600 focus:outline-none"
                 >
@@ -142,9 +158,13 @@ const Main = () => {
                   <input
                     id="title"
                     type="text"
+                    onChange={handleTitleInput}
                     className="block border border-gray-200 rounded shadow-sm py-1 px-3 w-full transition duration-200 ease-in-out focus:outline-none focus:border-gray-400"
                   />
-                  <small className="text-gray-500">Maximum is 150 char</small>
+                  <div className="flex items-center justify-between mt-1 text-gray-500">
+                    <small>Maximum is 50 char</small>
+                    <small ref={totalCharsRef}></small>
+                  </div>
                 </div>
                 <div className="mb-5">
                   <label
@@ -190,17 +210,24 @@ const Main = () => {
                 </div>
               </div>
               <footer className="p-6 border-t border-gray-100 bg-gray-50 flex items-center justify-end">
-                <button className="text-gray-700 border border-gray-300 hover:bg-gray-100 focus:bg-gray-100 mr-2 py-2 px-4 rounded-md focus:outline-none">
+                <button
+                  type="button"
+                  onClick={hideSidebar}
+                  className="text-gray-700 border border-gray-300 hover:bg-gray-100 focus:bg-gray-100 mr-2 py-2 px-4 rounded-md focus:outline-none"
+                >
                   Cancel
                 </button>
-                <button className="text-white bg-indigo-600 hover:bg-indigo-700 focus:bg-indigo-700 focus:outline-none py-2 px-4 rounded-md">
+                <button
+                  type="submit"
+                  className="text-white bg-indigo-600 hover:bg-indigo-700 focus:bg-indigo-700 focus:outline-none py-2 px-4 rounded-md"
+                >
                   Add
                 </button>
               </footer>
             </div>
           </SimpleBar>
         </div>
-      </div>
+      </form>
     </div>
   )
 }
