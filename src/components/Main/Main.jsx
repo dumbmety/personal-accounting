@@ -175,7 +175,7 @@ const Main = () => {
                   </label>
                   <input
                     id="amount"
-                    type="text"
+                    type="number"
                     className="block border border-gray-200 rounded shadow-sm py-1 px-3 w-full transition duration-200 ease-in-out focus:outline-none focus:border-gray-400"
                   />
                   <small className="text-gray-500">Enter a number</small>
