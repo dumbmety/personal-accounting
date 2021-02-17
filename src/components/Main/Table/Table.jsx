@@ -10,8 +10,8 @@ import TableData from './TableData'
 const Table = () => {
   return (
     <SimpleBar className="w-full">
-      <table className="min-w-full divide-y divide-gray-200 shadow-sm border border-gray-200">
-        <thead className="bg-gray-50">
+      <table className="list-items">
+        <thead className="items__header">
           <tr>
             {tableHead.map(item => (
               <TableHead
@@ -22,7 +22,7 @@ const Table = () => {
             ))}
           </tr>
         </thead>
-        <tbody className="bg-white divide-y divide-gray-200">
+        <tbody className="items__body">
           {tableData.map(item => (
             <TableData
               key={item.id}

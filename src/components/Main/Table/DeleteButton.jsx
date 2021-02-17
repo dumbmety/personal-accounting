@@ -2,9 +2,9 @@ import React from 'react'
 
 const DeleteButton = ({ id }) => {
   return (
-    <button className="ml-2 text-red-600 hover:text-indigo-900 focus:outline-none">
+    <button className="item__button text-red-600">
       <svg
-        className="w-5 h-5"
+        className="item__button--icon"
         fill="none"
         stroke="currentColor"
         viewBox="0 0 24 24"
