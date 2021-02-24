@@ -2,6 +2,7 @@ import React from 'react';
 
 import moment from 'moment';
 
+import { colorGenerator } from '../../../utils';
 import DeleteButton from './DeleteButton';
 import EditButton from './EditButton';
 
@@ -21,14 +22,17 @@ const TableData = ({ id, title, amount, type, categories, createdAt }) => {
         </span>
       </td>
       <td className="item items__category">
-        {categories.map(item => (
-          <span
-            key={item.id}
-            className={`items__category--item bg-${item.color}-100 text-${item.color}-800`}
-          >
-            {item.name}
-          </span>
-        ))}
+        {categories.map(item => {
+          const color = colorGenerator();
+          return (
+            <span
+              key={item}
+              className={`items__category--item bg-${color}-100 text-${color}-800`}
+            >
+              {item}
+            </span>
+          );
+        })}
       </td>
       <td className="item">{moment(createdAt).format('ll')}</td>
       <td className="item item__button--wrapper">
