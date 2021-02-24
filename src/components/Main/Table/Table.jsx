@@ -2,12 +2,12 @@ import React from 'react';
 
 import SimpleBar from 'simplebar-react';
 
-import { tableHead, tableData } from '../../../fixtures/table';
+import { tableHead } from '../../../fixtures/table';
 
 import TableHead from './TableHead';
 import TableData from './TableData';
 
-const Table = () => {
+const Table = ({ data }) => {
   return (
     <SimpleBar className="w-full">
       <table className="list-items">
@@ -23,14 +23,14 @@ const Table = () => {
           </tr>
         </thead>
         <tbody className="items__body">
-          {tableData.map(item => (
+          {data.map(item => (
             <TableData
               key={item.id}
               id={item.id}
               title={item.title}
               amount={item.amount}
               type={item.type}
-              category={item.category}
+              categories={item.categories}
               createdAt={item.createdAt}
             />
           ))}

@@ -1,9 +1,11 @@
 import React from 'react';
 
+import moment from 'moment';
+
 import DeleteButton from './DeleteButton';
 import EditButton from './EditButton';
 
-const TableData = ({ id, title, amount, type, category, createdAt }) => {
+const TableData = ({ id, title, amount, type, categories, createdAt }) => {
   const typeColor = type === 'income' ? 'green' : 'red';
 
   return (
@@ -19,7 +21,7 @@ const TableData = ({ id, title, amount, type, category, createdAt }) => {
         </span>
       </td>
       <td className="item items__category">
-        {category.map(item => (
+        {categories.map(item => (
           <span
             key={item.id}
             className={`items__category--item bg-${item.color}-100 text-${item.color}-800`}
@@ -28,7 +30,7 @@ const TableData = ({ id, title, amount, type, category, createdAt }) => {
           </span>
         ))}
       </td>
-      <td className="item">{createdAt}</td>
+      <td className="item">{moment(createdAt).format('ll')}</td>
       <td className="item item__button--wrapper">
         <EditButton id={id} />
         <DeleteButton id={id} />
