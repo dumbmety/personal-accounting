@@ -2,7 +2,7 @@ import React from 'react';
 
 import Button from './Button';
 
-const Menu = () => {
+const Menu = ({ showSidebar }) => {
   return (
     <header className="main__header">
       <div className="header__actions">
@@ -11,7 +11,12 @@ const Menu = () => {
         <Button text="Search" icon="search" />
       </div>
       <div>
-        <Button text="Add item" icon="plus" classes="mr-0" />
+        <Button
+          click={showSidebar}
+          text="Add item"
+          icon="plus"
+          classes="mr-0"
+        />
       </div>
     </header>
   );

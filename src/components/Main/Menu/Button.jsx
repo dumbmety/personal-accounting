@@ -2,9 +2,9 @@ import React from 'react';
 
 import 'boxicons';
 
-const Button = ({ text, icon, classes = '' }) => {
+const Button = ({ text, icon, classes, click }) => {
   return (
-    <button className={`action__button ${classes}`}>
+    <button onClick={click} className={`action__button ${classes}`}>
       <box-icon
         name={icon}
         type="regular"
