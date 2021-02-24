@@ -1,10 +1,10 @@
-import React from 'react'
+import React from 'react';
 
-import DeleteButton from './DeleteButton'
-import EditButton from './EditButton'
+import DeleteButton from './DeleteButton';
+import EditButton from './EditButton';
 
 const TableData = ({ id, title, amount, type, category, createdAt }) => {
-  const typeColor = type === 'income' ? 'green' : 'red'
+  const typeColor = type === 'income' ? 'green' : 'red';
 
   return (
     <tr>
@@ -34,7 +34,7 @@ const TableData = ({ id, title, amount, type, category, createdAt }) => {
         <DeleteButton id={id} />
       </td>
     </tr>
-  )
-}
+  );
+};
 
-export default TableData
+export default TableData;

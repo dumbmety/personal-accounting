@@ -2,7 +2,7 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Main Header */
+/* main header */
 #main-header {
   @apply mb-5;
 }
@@ -16,7 +16,7 @@
   @apply border-b border-gray-300 text-indigo-600 font-semibold hover:border-indigo-400;
 }
 
-/* Main */
+/* main */
 #main {
   @apply py-8;
 }
@@ -33,7 +33,7 @@
   @apply w-4 h-4 mr-1;
 }
 
-/* Table */
+/* table */
 .list-items {
   @apply min-w-full divide-y divide-gray-200 shadow-sm border border-gray-200;
 }
@@ -61,14 +61,8 @@
 .item__button--wrapper {
   @apply text-right text-sm font-medium;
 }
-.item__button {
-  @apply ml-2  hover:text-gray-900 focus:outline-none;
-}
-.item__button--icon {
-  @apply w-5 h-5;
-}
 
-/* Sidebar */
+/* sidebar */
 .sidebar-overly {
   transition: translate 0.3s linear;
 }
@@ -80,12 +74,12 @@
   height: 100% !important;
 }
 
-/* Type */
+/* type */
 .type-input:checked + .type-label {
   @apply border text-white border-indigo-500 bg-indigo-500;
 }
 
-/* Responsive */
+/* responsive */
 @media screen and (min-width: 768px) {
   .sidebar {
     width: 30vw;

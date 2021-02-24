@@ -1,11 +1,11 @@
-import React from 'react'
+import React from 'react';
 
-import SimpleBar from 'simplebar-react'
+import SimpleBar from 'simplebar-react';
 
-import { tableHead, tableData } from '../../../fixtures/table'
+import { tableHead, tableData } from '../../../fixtures/table';
 
-import TableHead from './TableHead'
-import TableData from './TableData'
+import TableHead from './TableHead';
+import TableData from './TableData';
 
 const Table = () => {
   return (
@@ -37,7 +37,7 @@ const Table = () => {
         </tbody>
       </table>
     </SimpleBar>
-  )
-}
+  );
+};
 
-export default Table
+export default Table;
