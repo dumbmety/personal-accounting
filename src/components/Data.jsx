@@ -10,6 +10,7 @@ function Data({ data }) {
             <Icon name="hashtag" />
           </Table.HeaderCell>
           <Table.HeaderCell>Title</Table.HeaderCell>
+          <Table.HeaderCell>Description</Table.HeaderCell>
           <Table.HeaderCell>Amount</Table.HeaderCell>
           <Table.HeaderCell>Type</Table.HeaderCell>
           <Table.HeaderCell>Categories</Table.HeaderCell>
@@ -23,7 +24,10 @@ function Data({ data }) {
             <Table.Cell collapsing textAlign="center">
               {item.id}
             </Table.Cell>
-            <Table.Cell title={item.title}>{item.title}</Table.Cell>
+            <Table.Cell title={item.title} collapsing>
+              {item.title}
+            </Table.Cell>
+            <Table.Cell title={item.description}>{item.description}</Table.Cell>
             <Table.Cell title={`$${item.amount}`} collapsing>
               ${item.amount}
             </Table.Cell>
