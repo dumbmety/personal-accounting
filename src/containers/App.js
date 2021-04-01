@@ -16,7 +16,30 @@ const App = () => {
   const handleCloseAddModal = () => setOpenAddModal(false);
 
   const handleAddItem = item => {
-    console.log(item);
+    const allItems = [...items];
+
+    const categories = [];
+    item.categories.split(',').map(category => {
+      categories.push({
+        id: categories.length,
+        name: category,
+        color: 'black',
+      });
+    });
+
+    const newItem = {
+      id: allItems.length + 1,
+      title: item.title,
+      description: item.description,
+      amount: item.amount,
+      type: item.type,
+      categories: categories,
+      createdAt: Date.now(),
+    };
+
+    allItems.push(newItem);
+    setItems(allItems);
+    setOpenAddModal(false);
   };
 
   useEffect(() => {
