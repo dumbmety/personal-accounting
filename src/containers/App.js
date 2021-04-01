@@ -13,9 +13,36 @@ import { colorGenerator } from '../utils';
 const App = () => {
   const [items, setItems] = useState([]);
   const [openAddModal, setOpenAddModal] = useState(false);
+  const [openDeleteModal, setOpenDeleteModal] = useState(false);
+
+  useEffect(() => {
+    setItems([
+      {
+        id: 1,
+        title: 'Online shop project',
+        description: 'Added new features',
+        amount: 200,
+        type: 'income',
+        categories: [{ id: 1, name: 'freelancing', color: 'pink' }],
+        createdAt: '2021-02-06',
+      },
+      {
+        id: 2,
+        title: 'Buy a laptop',
+        description: 'A new macbook air with M1 chip',
+        amount: 1000,
+        type: 'cost',
+        categories: [{ id: 1, name: 'apple', color: 'grey' }],
+        createdAt: '2021-03-15',
+      },
+    ]);
+  }, []);
 
   const handleOpenAddModal = () => setOpenAddModal(true);
   const handleCloseAddModal = () => setOpenAddModal(false);
+
+  const handleOpenDeleteModal = () => setOpenDeleteModal(true);
+  const handleCloseDeleteModal = () => setOpenDeleteModal(false);
 
   const handleAddItem = item => {
     const allItems = [...items];
@@ -44,28 +71,12 @@ const App = () => {
     setOpenAddModal(false);
   };
 
-  useEffect(() => {
-    setItems([
-      {
-        id: 1,
-        title: 'Online shop project',
-        description: 'Added new features',
-        amount: 200,
-        type: 'income',
-        categories: [{ id: 1, name: 'freelancing', color: 'pink' }],
-        createdAt: '2021-02-06',
-      },
-      {
-        id: 2,
-        title: 'Buy a laptop',
-        description: 'A new macbook air with M1 chip',
-        amount: 1000,
-        type: 'cost',
-        categories: [{ id: 1, name: 'apple', color: 'grey' }],
-        createdAt: '2021-03-15',
-      },
-    ]);
-  }, []);
+  const handleDeleteItem = id => {
+    const allItems = [...items];
+    allItems.splice(id - 1, 1);
+
+    setItems(allItems);
+  };
 
   return (
     <SimpleBar className="h-screen">
@@ -77,7 +88,12 @@ const App = () => {
           open={handleOpenAddModal}
           close={handleCloseAddModal}
         />
-        <Data data={items} />
+        <Data
+          data={items}
+          deleteItem={handleDeleteItem}
+          open={handleOpenDeleteModal}
+          close={handleCloseDeleteModal}
+        />
       </Container>
     </SimpleBar>
   );

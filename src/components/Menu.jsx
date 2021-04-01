@@ -70,16 +70,6 @@ function Menu({ status, open, close, addItem }) {
                     <Label>.00</Label>
                   </Input>
                 </Form.Field>
-                {/* <Form.Field
-                  control={Select}
-                  label="Type"
-                  options={[
-                    { key: 'i', text: 'Income', value: 'income' },
-                    { key: 'c', text: 'Cost', value: 'cost' },
-                  ]}
-                  placeholder="Choose Type"
-                  onChange={e => setType(e.target.value)}
-                /> */}
                 <Form.Field>
                   <label>Type</label>
                   <Select

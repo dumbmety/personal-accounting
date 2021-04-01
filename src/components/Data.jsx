@@ -1,7 +1,7 @@
 import moment from 'moment';
-import { Table, Button, Icon, Label } from 'semantic-ui-react';
+import { Table, Button, Icon, Label, Modal } from 'semantic-ui-react';
 
-function Data({ data }) {
+function Data({ data, open, close, deleteItem }) {
   return (
     <Table celled>
       <Table.Header>
@@ -52,9 +52,25 @@ function Data({ data }) {
               <Button icon color="green">
                 <Icon name="edit" />
               </Button>
-              <Button icon color="red">
-                <Icon name="delete" />
-              </Button>
+              <Modal
+                size="tiny"
+                trigger={
+                  <Button onClick={open} icon color="red">
+                    <Icon name="delete" />
+                  </Button>
+                }
+                header="Are you sure?"
+                content={`Are you sure to want delete "${item.title}" item?`}
+                actions={[
+                  'No!',
+                  {
+                    key: 'done',
+                    content: 'Yes, delete it',
+                    positive: true,
+                    onClick: () => deleteItem(item.id),
+                  },
+                ]}
+              />
             </Table.Cell>
           </Table.Row>
         ))}
