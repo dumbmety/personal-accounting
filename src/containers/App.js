@@ -18,7 +18,7 @@ const App = () => {
         title: 'Online shop project',
         amount: 200,
         type: 'income',
-        categories: ['freelancing'],
+        categories: [{ id: 1, name: 'freelancing', color: 'pink' }],
         createdAt: '2021-02-06',
       },
       {
@@ -26,7 +26,7 @@ const App = () => {
         title: 'Buy a laptop',
         amount: 1000,
         type: 'cost',
-        categories: ['apple'],
+        categories: [{ id: 1, name: 'apple', color: 'grey' }],
         createdAt: '2021-03-15',
       },
     ]);
