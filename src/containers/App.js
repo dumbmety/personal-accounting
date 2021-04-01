@@ -8,6 +8,8 @@ import Heading from '../components/Heading';
 import Menu from '../components/Menu';
 import Data from '../components/Data';
 
+import { colorGenerator } from '../utils';
+
 const App = () => {
   const [items, setItems] = useState([]);
   const [openAddModal, setOpenAddModal] = useState(false);
@@ -23,7 +25,7 @@ const App = () => {
       categories.push({
         id: categories.length,
         name: category,
-        color: 'black',
+        color: colorGenerator(),
       });
     });
 

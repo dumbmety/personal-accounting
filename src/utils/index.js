@@ -1,15 +1,20 @@
-export const colorGenerator = () => {
+export function colorGenerator() {
   const colors = [
-    'gray',
     'red',
+    'orange',
     'yellow',
+    'olive',
     'green',
+    'teal',
     'blue',
-    'indigo',
+    'violet',
     'purple',
     'pink',
+    'brown',
+    'grey',
+    'black',
   ];
 
-  const number = Math.floor(Math.random() * 8);
+  const number = Math.floor(Math.random() * 13);
   return colors[number];
-};
+}
