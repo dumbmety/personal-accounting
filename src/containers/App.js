@@ -15,6 +15,10 @@ const App = () => {
   const handleOpenAddModal = () => setOpenAddModal(true);
   const handleCloseAddModal = () => setOpenAddModal(false);
 
+  const handleAddItem = item => {
+    console.log(item);
+  };
+
   useEffect(() => {
     setItems([
       {
@@ -42,7 +46,12 @@ const App = () => {
     <SimpleBar className="h-screen">
       <Container>
         <Heading />
-        <Menu status={openAddModal} open={handleOpenAddModal} close={handleCloseAddModal} />
+        <Menu
+          addItem={handleAddItem}
+          status={openAddModal}
+          open={handleOpenAddModal}
+          close={handleCloseAddModal}
+        />
         <Data data={items} />
       </Container>
     </SimpleBar>

@@ -20,7 +20,7 @@ function Data({ data }) {
       </Table.Header>
       <Table.Body>
         {data.map(item => (
-          <Table.Row>
+          <Table.Row key={item.id}>
             <Table.Cell collapsing textAlign="center">
               {item.id}
             </Table.Cell>
@@ -44,7 +44,7 @@ function Data({ data }) {
               ))}
             </Table.Cell>
             <Table.Cell collapsing>
-              <time role="created at" dateTime={item.createdAt} title={item.createdAt}>
+              <time dateTime={item.createdAt} title={item.createdAt}>
                 {moment(item.createdAt).format('ll')}
               </time>
             </Table.Cell>
