@@ -1,4 +1,4 @@
-import { Button, Form, Icon, Input, Label, Modal, Radio, TextArea } from 'semantic-ui-react';
+import { Button, Form, Icon, Input, Label, Modal, Select, TextArea } from 'semantic-ui-react';
 
 function Menu({ status, open, close }) {
   return (
@@ -53,15 +53,15 @@ function Menu({ status, open, close }) {
                     <Label>.00</Label>
                   </Input>
                 </Form.Field>
-                <Form.Field>
-                  <label>Type</label>
-                  <Form.Field>
-                    <Radio label="Income" name="type" value="income" />
-                  </Form.Field>
-                  <Form.Field>
-                    <Radio label="Cost" name="type" value="cost" />
-                  </Form.Field>
-                </Form.Field>
+                <Form.Field
+                  control={Select}
+                  label="Type"
+                  options={[
+                    { key: 'i', text: 'Income', value: 'income' },
+                    { key: 'c', text: 'Cost', value: 'cost' },
+                  ]}
+                  placeholder="Choose Type"
+                />
               </Form.Group>
               <Form.Field>
                 <label htmlFor="categories">Categories</label>
