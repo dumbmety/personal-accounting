@@ -10,6 +10,10 @@ import Data from '../components/Data';
 
 const App = () => {
   const [items, setItems] = useState([]);
+  const [openAddModal, setOpenAddModal] = useState(false);
+
+  const handleOpenAddModal = () => setOpenAddModal(true);
+  const handleCloseAddModal = () => setOpenAddModal(false);
 
   useEffect(() => {
     setItems([
@@ -38,7 +42,7 @@ const App = () => {
     <SimpleBar className="h-screen">
       <Container>
         <Heading />
-        <Menu />
+        <Menu status={openAddModal} open={handleOpenAddModal} close={handleCloseAddModal} />
         <Data data={items} />
       </Container>
     </SimpleBar>
