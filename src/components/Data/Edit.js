@@ -1,10 +1,18 @@
+import { useContext } from 'react'
 import { Button, Icon, Label, Modal, Form, Select, TextArea, Input } from 'semantic-ui-react'
 
-const Edit = () => {
+import Context from '../../context'
+
+const Edit = ({ id, editRecord }) => {
+  const { handleCloseEditModal, handleOpenEditModal, openEditModal } = useContext(Context)
+
   return (
     <Modal
+      onClose={handleCloseEditModal}
+      onOpen={handleOpenEditModal}
+      open={openEditModal}
       trigger={
-        <Button icon color="green">
+        <Button onClick={handleOpenEditModal} icon color="green">
           <Icon name="edit" />
         </Button>
       }
@@ -57,8 +65,8 @@ const Edit = () => {
         </Form>
       </Modal.Content>
       <Modal.Actions>
-        <Button>Cancel</Button>
-        <Button content="Edit" labelPosition="right" icon="edit" positive />
+        <Button onClick={handleCloseEditModal}>Cancel</Button>
+        <Button onClick={editRecord} content="Edit" labelPosition="right" icon="edit" positive />
       </Modal.Actions>
     </Modal>
   )

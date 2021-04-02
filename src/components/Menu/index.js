@@ -1,7 +1,7 @@
 import Actions from './Actions'
 import Add from './Add'
 
-function Menu({ status, open, close, addItem }) {
+const Menu = () => {
   return (
     <section id="main-menu">
       <Actions />

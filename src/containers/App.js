@@ -18,10 +18,16 @@ const App = () => {
 
   // modal state
   const [openAddModal, setOpenAddModal] = useState(false)
+  const [openEditModal, setOpenEditModal] = useState(false)
+  const [openDeleteModal, setOpenDeleteModal] = useState(false)
 
   // modal hanlder
   const handleOpenAddModal = () => setOpenAddModal(true)
   const handleCloseAddModal = () => setOpenAddModal(false)
+  const handleOpenEditModal = () => setOpenEditModal(true)
+  const handleCloseEditModal = () => setOpenEditModal(false)
+  const handleOpenDeleteModal = () => setOpenDeleteModal(true)
+  const handleCloseDeleteModal = () => setOpenDeleteModal(false)
 
   useEffect(() => {
     setData([
@@ -46,6 +52,7 @@ const App = () => {
     ])
   }, [])
 
+  // record handler
   const handleAddRecord = record => {
     const allData = [...data]
 
@@ -63,14 +70,12 @@ const App = () => {
     setData(allData)
     setOpenAddModal(false)
   }
-
   const handleDeleteRecord = id => {
     const allData = [...data]
     allData.splice(id - 1, 1)
 
     setData(allData)
   }
-
   const handleEditRecord = id => {
     alert('edit')
   }
@@ -81,9 +86,14 @@ const App = () => {
         data,
         record,
         openAddModal,
-        openAddModal,
         handleOpenAddModal,
         handleCloseAddModal,
+        openDeleteModal,
+        handleOpenDeleteModal,
+        handleCloseDeleteModal,
+        openEditModal,
+        handleOpenEditModal,
+        handleCloseEditModal,
         addRecord: handleAddRecord,
         editRecord: handleEditRecord,
         deleteRecord: handleDeleteRecord,

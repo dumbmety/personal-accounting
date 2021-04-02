@@ -19,7 +19,7 @@ const Record = ({ id, title, description, amount, type, categories, createdAt })
       <Type type={type} />
       <Categories categories={categories} />
       <CreatedAt createdAt={createdAt} />
-      <Actions title={title} />
+      <Actions id={id} title={title} />
     </Table.Row>
   )
 }

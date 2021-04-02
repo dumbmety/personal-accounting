@@ -12,9 +12,18 @@ const context = createContext({
 
   // modals [add]
   openAddModal: false,
-  closeAddModal: false,
   handleOpenAddModal: () => {},
   handleCloseAddModal: () => {},
+
+  // modals [edit]
+  openEditModal: false,
+  handleOpenEditModal: () => {},
+  handleCloseEditModal: () => {},
+
+  // modals [delete]
+  openDeleteModal: false,
+  handleOpenDeleteModal: () => {},
+  handleCloseDeleteModal: () => {},
 })
 
 export default context

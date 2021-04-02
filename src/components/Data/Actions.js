@@ -1,13 +1,18 @@
+import { useContext } from 'react'
 import { Table } from 'semantic-ui-react'
 
 import Edit from './Edit'
 import Delete from './Delete'
 
-const Actions = ({ title }) => {
+import Context from '../../context'
+
+const Actions = ({ id, title }) => {
+  const { deleteRecord, editRecord } = useContext(Context)
+
   return (
     <Table.Cell collapsing>
-      <Edit />
-      <Delete title={title} />
+      <Edit editRecord={() => editRecord(id)} />
+      <Delete title={title} deleteRecord={() => deleteRecord(id)} />
     </Table.Cell>
   )
 }

@@ -1,11 +1,16 @@
+import { useContext } from 'react'
 import { Modal, Button, Icon } from 'semantic-ui-react'
 
-const Delete = ({ title }) => {
+import Context from '../../context'
+
+const Delete = ({ title, deleteRecord }) => {
+  const { handleOpenDelelteModal } = useContext(Context)
+
   return (
     <Modal
       size="tiny"
       trigger={
-        <Button icon color="red">
+        <Button onClick={handleOpenDelelteModal} icon color="red">
           <Icon name="delete" />
         </Button>
       }
@@ -17,6 +22,7 @@ const Delete = ({ title }) => {
           key: 'done',
           content: 'Yes, delete it',
           positive: true,
+          onClick: deleteRecord,
         },
       ]}
     />
