@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react'
+import { BrowserRouter as Router, Switch, Route, Redirect } from 'react-router-dom'
 import { Container } from 'semantic-ui-react'
 
 import SimpleBar from 'simplebar-react'
@@ -8,6 +9,7 @@ import Context from '../context'
 import Data from '../components/Data'
 import Heading from '../components/Heading'
 import Menu from '../components/Menu'
+import AddRecord from '../components/AddRecord'
 
 import { createCategories } from '../utils'
 
@@ -17,15 +19,9 @@ const App = () => {
   const [record, setRecord] = useState({})
 
   // modal state
-  const [openAddModal, setOpenAddModal] = useState(false)
-  const [openEditModal, setOpenEditModal] = useState(false)
   const [openDeleteModal, setOpenDeleteModal] = useState(false)
 
   // modal hanlder
-  const handleOpenAddModal = () => setOpenAddModal(true)
-  const handleCloseAddModal = () => setOpenAddModal(false)
-  const handleOpenEditModal = () => setOpenEditModal(true)
-  const handleCloseEditModal = () => setOpenEditModal(false)
   const handleOpenDeleteModal = () => setOpenDeleteModal(true)
   const handleCloseDeleteModal = () => setOpenDeleteModal(false)
 
@@ -68,7 +64,6 @@ const App = () => {
 
     allData.push(newRecord)
     setData(allData)
-    setOpenAddModal(false)
   }
   const handleDeleteRecord = id => {
     const allData = [...data]
@@ -85,27 +80,30 @@ const App = () => {
       value={{
         data,
         record,
-        openAddModal,
-        handleOpenAddModal,
-        handleCloseAddModal,
         openDeleteModal,
         handleOpenDeleteModal,
         handleCloseDeleteModal,
-        openEditModal,
-        handleOpenEditModal,
-        handleCloseEditModal,
         addRecord: handleAddRecord,
         editRecord: handleEditRecord,
         deleteRecord: handleDeleteRecord,
       }}
     >
-      <SimpleBar>
-        <Container>
-          <Heading />
-          <Menu />
-          <Data />
-        </Container>
-      </SimpleBar>
+      <Router>
+        <SimpleBar>
+          <Container>
+            <Switch>
+              <Route path="/add">
+                <AddRecord />
+              </Route>
+              <Route path="/" exact>
+                <Heading />
+                <Menu />
+                <Data />
+              </Route>
+            </Switch>
+          </Container>
+        </SimpleBar>
+      </Router>
     </Context.Provider>
   )
 }
