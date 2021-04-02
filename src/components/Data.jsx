@@ -1,7 +1,26 @@
 import moment from 'moment';
-import { Table, Button, Icon, Label, Modal } from 'semantic-ui-react';
+import { useState } from 'react';
+import {
+  Table,
+  Button,
+  Icon,
+  Label,
+  Modal,
+  Form,
+  Select,
+  TextArea,
+  Input,
+} from 'semantic-ui-react';
 
-function Data({ data, open, close, deleteItem }) {
+function Data({ data, status, openDelete, openEdit, closeEdit, editItem, deleteItem, targetData }) {
+  const [title, setTitle] = useState('');
+  const [description, setDescription] = useState('');
+  const [amount, setAmount] = useState('');
+  const [type, setType] = useState('');
+  const [categories, setCategories] = useState('');
+
+  const item = { title, description, amount, type, categories };
+
   return (
     <Table celled>
       <Table.Header>
@@ -49,13 +68,100 @@ function Data({ data, open, close, deleteItem }) {
               </time>
             </Table.Cell>
             <Table.Cell collapsing>
-              <Button icon color="green">
-                <Icon name="edit" />
-              </Button>
+              <Modal
+                onClose={closeEdit}
+                onOpen={openEdit}
+                open={status}
+                trigger={
+                  <Button onClick={() => openEdit(item.id)} icon color="green">
+                    <Icon name="edit" />
+                  </Button>
+                }
+              >
+                <Modal.Header>Edit Item</Modal.Header>
+                <Modal.Content>
+                  <Form onSubmit={() => {}}>
+                    <Form.Group widths="equal">
+                      <Form.Field>
+                        <label htmlFor="title">Title</label>
+                        <input
+                          id="title"
+                          value={targetData[0]?.title}
+                          placeholder="Enter item title ..."
+                          onChange={e => setTitle(e.target.value)}
+                        />
+                      </Form.Field>
+                      <Form.Field>
+                        <label htmlFor="description">Description</label>
+                        <input
+                          id="description"
+                          value={targetData[0]?.description}
+                          placeholder="Enter item description ..."
+                          onChange={e => setDescription(e.target.value)}
+                        />
+                      </Form.Field>
+                    </Form.Group>
+                    <Form.Group widths="equal">
+                      <Form.Field>
+                        <label htmlFor="amount">Amount</label>
+                        <Input labelPosition="right" type="text" placeholder="Amount">
+                          <Label basic>$</Label>
+                          <input
+                            id="amount"
+                            value={targetData[0]?.amount}
+                            onChange={e => setAmount(e.target.value)}
+                          />
+                          <Label>.00</Label>
+                        </Input>
+                      </Form.Field>
+                      <Form.Field>
+                        <label>Type</label>
+                        <Select
+                          placeholder="Choose Type"
+                          options={[
+                            {
+                              key: 'i',
+                              text: 'Income',
+                              value: 'income',
+                              onClick: () => setType('income'),
+                            },
+                            {
+                              key: 'c',
+                              text: 'Cost',
+                              value: 'cost',
+                              onClick: () => setType('cost'),
+                            },
+                          ]}
+                          value={targetData[0]?.type}
+                        />
+                      </Form.Field>
+                    </Form.Group>
+                    <Form.Field>
+                      <label htmlFor="categories">Categories</label>
+                      <TextArea
+                        id="categories"
+                        placeholder="Separate categories with commas"
+                        onChange={e => setCategories(e.target.value)}
+                        value={targetData[0]?.categories.map(category => category.name)}
+                      />
+                    </Form.Field>
+                  </Form>
+                </Modal.Content>
+                <Modal.Actions>
+                  <Button onClick={closeEdit}>Cancel</Button>
+                  <Button
+                    content="Edit"
+                    labelPosition="right"
+                    icon="edit"
+                    onClick={() => editItem(item.id)}
+                    positive
+                  />
+                </Modal.Actions>
+              </Modal>
               <Modal
                 size="tiny"
                 trigger={
-                  <Button onClick={open} icon color="red">
+                  <Button onClick={openDelete} icon color="red">
                     <Icon name="delete" />
                   </Button>
                 }

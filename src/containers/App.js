@@ -12,7 +12,9 @@ import { colorGenerator } from '../utils';
 
 const App = () => {
   const [items, setItems] = useState([]);
+  const [item, setItem] = useState([]);
   const [openAddModal, setOpenAddModal] = useState(false);
+  const [openEditModal, setOpenEditModal] = useState(false);
   const [openDeleteModal, setOpenDeleteModal] = useState(false);
 
   useEffect(() => {
@@ -40,6 +42,18 @@ const App = () => {
 
   const handleOpenAddModal = () => setOpenAddModal(true);
   const handleCloseAddModal = () => setOpenAddModal(false);
+
+  const handleOpenEditModal = id => {
+    const item = items.filter(i => i.id === id);
+
+    if (typeof id === 'number') {
+      setItem(item);
+    }
+
+    setOpenEditModal(true);
+  };
+
+  const handleCloseEditModal = () => setOpenEditModal(false);
 
   const handleOpenDeleteModal = () => setOpenDeleteModal(true);
   const handleCloseDeleteModal = () => setOpenDeleteModal(false);
@@ -78,6 +92,10 @@ const App = () => {
     setItems(allItems);
   };
 
+  const handleEditItem = id => {
+    alert('edit');
+  };
+
   return (
     <SimpleBar className="h-screen">
       <Container>
@@ -90,9 +108,14 @@ const App = () => {
         />
         <Data
           data={items}
+          targetData={item}
+          status={openEditModal}
+          editItem={handleEditItem}
           deleteItem={handleDeleteItem}
-          open={handleOpenDeleteModal}
-          close={handleCloseDeleteModal}
+          openEdit={handleOpenEditModal}
+          closeEdit={handleCloseEditModal}
+          openDelete={handleOpenDeleteModal}
+          closeDelete={handleCloseDeleteModal}
         />
       </Container>
     </SimpleBar>
