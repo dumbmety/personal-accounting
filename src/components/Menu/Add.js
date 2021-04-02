@@ -1,0 +1,98 @@
+import { useState } from 'react'
+import { Button, Form, Icon, Input, Label, Modal, Select, TextArea } from 'semantic-ui-react'
+
+const Add = ({ close, open, status, add }) => {
+  const [title, setTitle] = useState('')
+  const [description, setDescription] = useState('')
+  const [amount, setAmount] = useState('')
+  const [type, setType] = useState('')
+  const [categories, setCategories] = useState('')
+
+  const newItem = { title, description, amount, type, categories }
+
+  return (
+    <div>
+      <Modal
+        onClose={close}
+        onOpen={open}
+        open={status}
+        trigger={
+          <Button onClick={open} color="blue">
+            <Icon name="add" />
+            Add item
+          </Button>
+        }
+      >
+        <Modal.Header>Add new Item</Modal.Header>
+        <Modal.Content>
+          <Form onSubmit={() => add(newItem)}>
+            <Form.Group widths="equal">
+              <Form.Field>
+                <label htmlFor="title">Title</label>
+                <input
+                  id="title"
+                  placeholder="Enter item title ..."
+                  onChange={e => setTitle(e.target.value)}
+                />
+              </Form.Field>
+              <Form.Field>
+                <label htmlFor="description">Description</label>
+                <input
+                  id="description"
+                  placeholder="Enter item description ..."
+                  onChange={e => setDescription(e.target.value)}
+                />
+              </Form.Field>
+            </Form.Group>
+            <Form.Group widths="equal">
+              <Form.Field>
+                <label htmlFor="amount">Amount</label>
+                <Input labelPosition="right" type="text" placeholder="Amount">
+                  <Label basic>$</Label>
+                  <input id="amount" onChange={e => setAmount(e.target.value)} />
+                  <Label>.00</Label>
+                </Input>
+              </Form.Field>
+              <Form.Field>
+                <label>Type</label>
+                <Select
+                  placeholder="Choose Type"
+                  options={[
+                    {
+                      key: 'i',
+                      text: 'Income',
+                      value: 'income',
+                      onClick: () => setType('income'),
+                    },
+                    { key: 'c', text: 'Cost', value: 'cost', onClick: () => setType('cost') },
+                  ]}
+                  value={type || null}
+                />
+              </Form.Field>
+            </Form.Group>
+            <Form.Field>
+              <label htmlFor="categories">Categories</label>
+              <TextArea
+                id="categories"
+                placeholder="Separate categories with commas"
+                onChange={e => setCategories(e.target.value)}
+              />
+            </Form.Field>
+          </Form>
+        </Modal.Content>
+        <Modal.Actions>
+          <Button onClick={close}>Cancel</Button>
+          <Button
+            content="Add"
+            labelPosition="right"
+            icon="add"
+            onClick={() => add(newItem)}
+            positive
+          />
+        </Modal.Actions>
+      </Modal>
+    </div>
+  )
+}
+
+export default Add

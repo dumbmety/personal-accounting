@@ -1,6 +1,6 @@
-import { Header } from 'semantic-ui-react';
+import { Header } from 'semantic-ui-react'
 
-function Heading() {
+const Heading = () => {
   return (
     <header id="main-header">
       <Header as="h1">Personal Accounting</Header>
@@ -11,7 +11,7 @@ function Heading() {
         </a>
       </p>
     </header>
-  );
+  )
 }
 
-export default Heading;
+export default Heading

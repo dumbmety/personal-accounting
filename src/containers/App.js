@@ -1,21 +1,21 @@
-import { useState, useEffect } from 'react';
-import { Container } from 'semantic-ui-react';
+import { useState, useEffect } from 'react'
+import { Container } from 'semantic-ui-react'
 
-import SimpleBar from 'simplebar-react';
-import 'simplebar/dist/simplebar.min.css';
+import SimpleBar from 'simplebar-react'
+import 'simplebar/dist/simplebar.min.css'
 
-import Heading from '../components/Heading';
-import Menu from '../components/Menu';
-import Data from '../components/Data';
+import Data from '../components/Data'
+import Heading from '../components/Heading'
+import Menu from '../components/Menu'
 
-import { colorGenerator } from '../utils';
+import { colorGenerator } from '../utils'
 
 const App = () => {
-  const [items, setItems] = useState([]);
-  const [item, setItem] = useState([]);
-  const [openAddModal, setOpenAddModal] = useState(false);
-  const [openEditModal, setOpenEditModal] = useState(false);
-  const [openDeleteModal, setOpenDeleteModal] = useState(false);
+  const [items, setItems] = useState([])
+  const [item, setItem] = useState([])
+  const [openAddModal, setOpenAddModal] = useState(false)
+  const [openEditModal, setOpenEditModal] = useState(false)
+  const [, setOpenDeleteModal] = useState(false)
 
   useEffect(() => {
     setItems([
@@ -37,38 +37,38 @@ const App = () => {
         categories: [{ id: 1, name: 'apple', color: 'grey' }],
         createdAt: '2021-03-15',
       },
-    ]);
-  }, []);
+    ])
+  }, [])
 
-  const handleOpenAddModal = () => setOpenAddModal(true);
-  const handleCloseAddModal = () => setOpenAddModal(false);
+  const handleOpenAddModal = () => setOpenAddModal(true)
+  const handleCloseAddModal = () => setOpenAddModal(false)
 
   const handleOpenEditModal = id => {
-    const item = items.filter(i => i.id === id);
+    const item = items.filter(i => i.id === id)
 
     if (typeof id === 'number') {
-      setItem(item);
+      setItem(item)
     }
 
-    setOpenEditModal(true);
-  };
+    setOpenEditModal(true)
+  }
 
-  const handleCloseEditModal = () => setOpenEditModal(false);
+  const handleCloseEditModal = () => setOpenEditModal(false)
 
-  const handleOpenDeleteModal = () => setOpenDeleteModal(true);
-  const handleCloseDeleteModal = () => setOpenDeleteModal(false);
+  const handleOpenDeleteModal = () => setOpenDeleteModal(true)
+  const handleCloseDeleteModal = () => setOpenDeleteModal(false)
 
   const handleAddItem = item => {
-    const allItems = [...items];
+    const allItems = [...items]
 
-    const categories = [];
+    const categories = []
     item.categories.split(',').map(category => {
       categories.push({
         id: categories.length,
         name: category,
         color: colorGenerator(),
-      });
-    });
+      })
+    })
 
     const newItem = {
       id: allItems.length + 1,
@@ -78,26 +78,26 @@ const App = () => {
       type: item.type,
       categories: categories,
       createdAt: Date.now(),
-    };
+    }
 
-    allItems.push(newItem);
-    setItems(allItems);
-    setOpenAddModal(false);
-  };
+    allItems.push(newItem)
+    setItems(allItems)
+    setOpenAddModal(false)
+  }
 
   const handleDeleteItem = id => {
-    const allItems = [...items];
-    allItems.splice(id - 1, 1);
+    const allItems = [...items]
+    allItems.splice(id - 1, 1)
 
-    setItems(allItems);
-  };
+    setItems(allItems)
+  }
 
   const handleEditItem = id => {
-    alert('edit');
-  };
+    alert('edit')
+  }
 
   return (
-    <SimpleBar className="h-screen">
+    <SimpleBar>
       <Container>
         <Heading />
         <Menu
@@ -119,7 +119,7 @@ const App = () => {
         />
       </Container>
     </SimpleBar>
-  );
-};
+  )
+}
 
-export default App;
+export default App
