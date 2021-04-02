@@ -9,7 +9,7 @@ import ID from './ID'
 import Title from './Title'
 import Type from './Type'
 
-const Item = ({ id, title, description, amount, type, categories, createdAt }) => {
+const Record = ({ id, title, description, amount, type, categories, createdAt }) => {
   return (
     <Table.Row>
       <ID id={id} />
@@ -24,4 +24,4 @@ const Item = ({ id, title, description, amount, type, categories, createdAt }) =
   )
 }
 
-export default Item
+export default Record

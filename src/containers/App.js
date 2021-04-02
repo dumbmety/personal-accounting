@@ -13,7 +13,7 @@ import { colorGenerator } from '../utils'
 
 const App = () => {
   const [data, setData] = useState([])
-  const [item, setItem] = useState({})
+  const [record, setRecord] = useState({})
 
   useEffect(() => {
     setData([
@@ -38,11 +38,11 @@ const App = () => {
     ])
   }, [])
 
-  const handleAddItem = item => {
+  const handleAddRecord = record => {
     const allData = [...data]
 
     const categories = []
-    item.categories.split(',').map(category => {
+    record.categories.split(',').map(category => {
       categories.push({
         id: categories.length,
         name: category,
@@ -50,28 +50,28 @@ const App = () => {
       })
     })
 
-    const newItem = {
+    const newRecord = {
       id: allData.length + 1,
-      title: item.title,
-      description: item.description,
-      amount: item.amount,
-      type: item.type,
+      title: record.title,
+      description: record.description,
+      amount: record.amount,
+      type: record.type,
       categories: categories,
       createdAt: Date.now(),
     }
 
-    allData.push(newItem)
+    allData.push(newRecord)
     setData(allData)
   }
 
-  const handleDeleteItem = id => {
+  const handleDeleteRecord = id => {
     const allData = [...data]
     allData.splice(id - 1, 1)
 
     setData(allData)
   }
 
-  const handleEditItem = id => {
+  const handleEditRecord = id => {
     alert('edit')
   }
 
@@ -79,10 +79,10 @@ const App = () => {
     <Context.Provider
       value={{
         data,
-        item,
-        addItem: handleAddItem,
-        editItem: handleEditItem,
-        deleteItem: handleDeleteItem,
+        record,
+        addRecord: handleAddRecord,
+        editRecord: handleEditRecord,
+        deleteRecord: handleDeleteRecord,
       }}
     >
       <SimpleBar>

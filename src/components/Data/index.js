@@ -2,7 +2,7 @@ import { useContext } from 'react'
 import { Table } from 'semantic-ui-react'
 
 import Context from '../../context'
-import Item from './Item'
+import Record from './Record'
 
 const Data = () => {
   const { data } = useContext(Context)
@@ -22,16 +22,16 @@ const Data = () => {
         </Table.Row>
       </Table.Header>
       <Table.Body>
-        {data.map(item => (
-          <Item
-            key={item.id}
-            id={item.id}
-            title={item.title}
-            description={item.description}
-            amount={item.amount}
-            type={item.type}
-            categories={item.categories}
-            createdAt={item.createdAt}
+        {data.map(record => (
+          <Record
+            key={record.id}
+            id={record.id}
+            title={record.title}
+            description={record.description}
+            amount={record.amount}
+            type={record.type}
+            categories={record.categories}
+            createdAt={record.createdAt}
           />
         ))}
       </Table.Body>
