@@ -23,7 +23,7 @@ const AddRecord = () => {
   const [categories, setCategories] = useState('')
 
   // context
-  const { addRecord, handleCloseAddModal, handleOpenAddModal, openAddModal } = useContext(Context)
+  const { addRecord, handleCloseAddModal } = useContext(Context)
 
   const newRecord = { title, description, amount, type, categories }
 

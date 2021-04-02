@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react'
-import { BrowserRouter as Router, Switch, Route, Redirect } from 'react-router-dom'
+import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
 import { Container } from 'semantic-ui-react'
 
 import SimpleBar from 'simplebar-react'
@@ -16,7 +16,7 @@ import { createCategories } from '../utils'
 const App = () => {
   // data state
   const [data, setData] = useState([])
-  const [record, setRecord] = useState({})
+  const [record, ] = useState({})
 
   // modal state
   const [openDeleteModal, setOpenDeleteModal] = useState(false)
