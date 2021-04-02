@@ -9,7 +9,7 @@ import Data from '../components/Data'
 import Heading from '../components/Heading'
 import Menu from '../components/Menu'
 
-import { colorGenerator } from '../utils'
+import { createCategories } from '../utils'
 
 const App = () => {
   // data state
@@ -49,22 +49,13 @@ const App = () => {
   const handleAddRecord = record => {
     const allData = [...data]
 
-    const categories = []
-    record.categories.split(',').map(category => {
-      categories.push({
-        id: categories.length,
-        name: category,
-        color: colorGenerator(),
-      })
-    })
-
     const newRecord = {
       id: allData.length + 1,
       title: record.title,
       description: record.description,
       amount: record.amount,
       type: record.type,
-      categories: categories,
+      categories: createCategories(record.categories),
       createdAt: Date.now(),
     }
 

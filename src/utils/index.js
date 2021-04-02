@@ -1,3 +1,4 @@
 import colorGenerator from './colorGenerator'
+import createCategories from './createCategories'
 
-export { colorGenerator }
+export { colorGenerator, createCategories }
