@@ -12,8 +12,16 @@ import Menu from '../components/Menu'
 import { colorGenerator } from '../utils'
 
 const App = () => {
+  // data state
   const [data, setData] = useState([])
   const [record, setRecord] = useState({})
+
+  // modal state
+  const [openAddModal, setOpenAddModal] = useState(false)
+
+  // modal hanlder
+  const handleOpenAddModal = () => setOpenAddModal(true)
+  const handleCloseAddModal = () => setOpenAddModal(false)
 
   useEffect(() => {
     setData([
@@ -62,6 +70,7 @@ const App = () => {
 
     allData.push(newRecord)
     setData(allData)
+    setOpenAddModal(false)
   }
 
   const handleDeleteRecord = id => {
@@ -80,6 +89,10 @@ const App = () => {
       value={{
         data,
         record,
+        openAddModal,
+        openAddModal,
+        handleOpenAddModal,
+        handleCloseAddModal,
         addRecord: handleAddRecord,
         editRecord: handleEditRecord,
         deleteRecord: handleDeleteRecord,

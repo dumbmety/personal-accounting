@@ -1,37 +1,43 @@
-import { useState } from 'react'
+import { useContext, useState } from 'react'
 import { Button, Form, Icon, Input, Label, Modal, Select, TextArea } from 'semantic-ui-react'
 
-const Add = ({ close, open, status, add }) => {
+import Context from '../../context'
+
+const Add = () => {
+  // input state
   const [title, setTitle] = useState('')
   const [description, setDescription] = useState('')
   const [amount, setAmount] = useState('')
   const [type, setType] = useState('')
   const [categories, setCategories] = useState('')
 
-  const newItem = { title, description, amount, type, categories }
+  // context
+  const { addRecord, handleCloseAddModal, handleOpenAddModal, openAddModal } = useContext(Context)
+
+  const newRecord = { title, description, amount, type, categories }
 
   return (
     <div>
       <Modal
-        onClose={close}
-        onOpen={open}
-        open={status}
+        onClose={handleCloseAddModal}
+        onOpen={handleOpenAddModal}
+        open={openAddModal}
         trigger={
-          <Button onClick={open} color="blue">
+          <Button onClick={handleOpenAddModal} color="blue">
             <Icon name="add" />
-            Add item
+            Add record
           </Button>
         }
       >
-        <Modal.Header>Add new Item</Modal.Header>
+        <Modal.Header>Add new Record</Modal.Header>
         <Modal.Content>
-          <Form onSubmit={() => add(newItem)}>
+          <Form onSubmit={() => addRecord(newRecord)}>
             <Form.Group widths="equal">
               <Form.Field>
                 <label htmlFor="title">Title</label>
                 <input
                   id="title"
-                  placeholder="Enter item title ..."
+                  placeholder="Enter record title ..."
                   onChange={e => setTitle(e.target.value)}
                 />
               </Form.Field>
@@ -39,7 +45,7 @@ const Add = ({ close, open, status, add }) => {
                 <label htmlFor="description">Description</label>
                 <input
                   id="description"
-                  placeholder="Enter item description ..."
+                  placeholder="Enter record description ..."
                   onChange={e => setDescription(e.target.value)}
                 />
               </Form.Field>
@@ -81,12 +87,12 @@ const Add = ({ close, open, status, add }) => {
           </Form>
         </Modal.Content>
         <Modal.Actions>
-          <Button onClick={close}>Cancel</Button>
+          <Button onClick={handleCloseAddModal}>Cancel</Button>
           <Button
             content="Add"
             labelPosition="right"
             icon="add"
-            onClick={() => add(newItem)}
+            onClick={() => addRecord(newRecord)}
             positive
           />
         </Modal.Actions>

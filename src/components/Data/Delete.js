@@ -10,7 +10,7 @@ const Delete = ({ title }) => {
         </Button>
       }
       header="Are you sure?"
-      content={`Are you sure to want delete "${title}" item?`}
+      content={`Are you sure to want delete "${title}" record?`}
       actions={[
         'No!',
         {

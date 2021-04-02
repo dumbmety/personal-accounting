@@ -1,11 +1,20 @@
 import { createContext } from 'react'
 
 const context = createContext({
+  // data
   data: [],
-  item: {},
-  addItem: () => {},
-  editItem: () => {},
-  deleteItem: () => {},
+  record: {},
+
+  // handler
+  addRecord: () => {},
+  editRecord: () => {},
+  deleteRecord: () => {},
+
+  // modals [add]
+  openAddModal: false,
+  closeAddModal: false,
+  handleOpenAddModal: () => {},
+  handleCloseAddModal: () => {},
 })
 
 export default context

@@ -9,17 +9,17 @@ const Edit = () => {
         </Button>
       }
     >
-      <Modal.Header>Edit Item</Modal.Header>
+      <Modal.Header>Edit Record</Modal.Header>
       <Modal.Content>
         <Form>
           <Form.Group widths="equal">
             <Form.Field>
               <label htmlFor="title">Title</label>
-              <input id="title" placeholder="Enter item title ..." />
+              <input id="title" placeholder="Enter record title ..." />
             </Form.Field>
             <Form.Field>
               <label htmlFor="description">Description</label>
-              <input id="description" placeholder="Enter item description ..." />
+              <input id="description" placeholder="Enter record description ..." />
             </Form.Field>
           </Form.Group>
           <Form.Group widths="equal">
