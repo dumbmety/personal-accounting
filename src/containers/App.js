@@ -4,6 +4,7 @@ import { Container } from 'semantic-ui-react'
 import SimpleBar from 'simplebar-react'
 import 'simplebar/dist/simplebar.min.css'
 
+import Context from '../context'
 import Data from '../components/Data'
 import Heading from '../components/Heading'
 import Menu from '../components/Menu'
@@ -11,14 +12,11 @@ import Menu from '../components/Menu'
 import { colorGenerator } from '../utils'
 
 const App = () => {
-  const [items, setItems] = useState([])
-  const [item, setItem] = useState([])
-  const [openAddModal, setOpenAddModal] = useState(false)
-  const [openEditModal, setOpenEditModal] = useState(false)
-  const [, setOpenDeleteModal] = useState(false)
+  const [data, setData] = useState([])
+  const [item, setItem] = useState({})
 
   useEffect(() => {
-    setItems([
+    setData([
       {
         id: 1,
         title: 'Online shop project',
@@ -40,26 +38,8 @@ const App = () => {
     ])
   }, [])
 
-  const handleOpenAddModal = () => setOpenAddModal(true)
-  const handleCloseAddModal = () => setOpenAddModal(false)
-
-  const handleOpenEditModal = id => {
-    const item = items.filter(i => i.id === id)
-
-    if (typeof id === 'number') {
-      setItem(item)
-    }
-
-    setOpenEditModal(true)
-  }
-
-  const handleCloseEditModal = () => setOpenEditModal(false)
-
-  const handleOpenDeleteModal = () => setOpenDeleteModal(true)
-  const handleCloseDeleteModal = () => setOpenDeleteModal(false)
-
   const handleAddItem = item => {
-    const allItems = [...items]
+    const allData = [...data]
 
     const categories = []
     item.categories.split(',').map(category => {
@@ -71,7 +51,7 @@ const App = () => {
     })
 
     const newItem = {
-      id: allItems.length + 1,
+      id: allData.length + 1,
       title: item.title,
       description: item.description,
       amount: item.amount,
@@ -80,16 +60,15 @@ const App = () => {
       createdAt: Date.now(),
     }
 
-    allItems.push(newItem)
-    setItems(allItems)
-    setOpenAddModal(false)
+    allData.push(newItem)
+    setData(allData)
   }
 
   const handleDeleteItem = id => {
-    const allItems = [...items]
-    allItems.splice(id - 1, 1)
+    const allData = [...data]
+    allData.splice(id - 1, 1)
 
-    setItems(allItems)
+    setData(allData)
   }
 
   const handleEditItem = id => {
@@ -97,28 +76,23 @@ const App = () => {
   }
 
   return (
-    <SimpleBar>
-      <Container>
-        <Heading />
-        <Menu
-          addItem={handleAddItem}
-          status={openAddModal}
-          open={handleOpenAddModal}
-          close={handleCloseAddModal}
-        />
-        <Data
-          data={items}
-          targetData={item}
-          status={openEditModal}
-          editItem={handleEditItem}
-          deleteItem={handleDeleteItem}
-          openEdit={handleOpenEditModal}
-          closeEdit={handleCloseEditModal}
-          openDelete={handleOpenDeleteModal}
-          closeDelete={handleCloseDeleteModal}
-        />
-      </Container>
-    </SimpleBar>
+    <Context.Provider
+      value={{
+        data,
+        item,
+        addItem: handleAddItem,
+        editItem: handleEditItem,
+        deleteItem: handleDeleteItem,
+      }}
+    >
+      <SimpleBar>
+        <Container>
+          <Heading />
+          <Menu />
+          <Data />
+        </Container>
+      </SimpleBar>
+    </Context.Provider>
   )
 }
 

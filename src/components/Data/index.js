@@ -1,8 +1,12 @@
+import { useContext } from 'react'
 import { Table } from 'semantic-ui-react'
 
+import Context from '../../context'
 import Item from './Item'
 
-function Data({ data, status, openDelete, openEdit, closeEdit, editItem, deleteItem, targetData }) {
+const Data = () => {
+  const { data } = useContext(Context)
+
   return (
     <Table celled>
       <Table.Header>
