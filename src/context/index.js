@@ -6,6 +6,7 @@ const context = createContext({
   record: {},
 
   // handler
+  getRecord: () => {},
   addRecord: () => {},
   editRecord: () => {},
   deleteRecord: () => {},

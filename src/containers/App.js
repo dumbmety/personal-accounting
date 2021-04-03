@@ -44,6 +44,13 @@ const App = () => {
     ])
   }, [])
 
+  const handleGetRecord = id => {
+    const allData = [...data]
+    const record = allData.find(r => r.id === id)
+
+    return record
+  }
+
   const handleAddRecord = ({ title, amount, type, categories }) => {
     const allData = [...data]
 
@@ -80,6 +87,7 @@ const App = () => {
         openAddModal,
         handleOpenAddModal,
         handleCloseAddModal,
+        getRecord: handleGetRecord,
         addRecord: handleAddRecord,
         editRecord: handleEditRecord,
         deleteRecord: handleDeleteRecord,
