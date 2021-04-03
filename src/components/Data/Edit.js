@@ -4,13 +4,13 @@ import { Button, Dropdown, Form, Icon, Input, Label, Modal, Select } from 'seman
 import Context from '../../context'
 
 const Edit = ({ id }) => {
-  const { getRecord, editRecord } = useContext(Context)
+  const { categories, getRecord, editRecord } = useContext(Context)
   const record = getRecord(id)
 
   const [title, setTitle] = useState(record.title)
   const [amount, setAmount] = useState(record.amount)
   const [type, setType] = useState(record.type)
-  let [categories, setCategories] = useState(record.categories)
+  const [category, setCategory] = useState(record.category.value)
 
   const [openEditModal, setOpenEditModal] = useState(false)
 
@@ -18,12 +18,8 @@ const Edit = ({ id }) => {
   const handleCloseEditModal = () => setOpenEditModal(false)
 
   const handleSubmitModal = () => {
-    editRecord({ id, title, amount, type, categories })
+    editRecord({ id, title, amount, type, category })
     setOpenEditModal(false)
-  }
-
-  if (typeof categories !== 'string') {
-    categories = categories.map(category => category.name)
   }
 
   return (
@@ -52,12 +48,12 @@ const Edit = ({ id }) => {
               />
             </Form.Field>
             <Form.Field>
-              <label htmlFor="categories">Categories</label>
-              <input
-                id="categories"
-                value={categories}
-                placeholder="Enter categories ..."
-                onChange={e => setCategories(e.target.value)}
+              <label htmlFor="category">Category</label>
+              <Select
+                placeholder="Choose a Category"
+                value={category}
+                options={categories}
+                onChange={(event, data) => setCategory(data.value)}
               />
             </Form.Field>
           </Form.Group>
@@ -81,9 +77,10 @@ const Edit = ({ id }) => {
                 placeholder="Choose type"
                 value={type}
                 options={[
-                  { key: 'i', value: 'income', text: 'Income', onClick: () => setType('income') },
-                  { key: 'c', value: 'cost', text: 'Cost', onClick: () => setType('cost') },
+                  { key: 'i', value: 'income', text: 'Income' },
+                  { key: 'c', value: 'cost', text: 'Cost' },
                 ]}
+                onChange={(event, data) => setType(data.value)}
               />
             </Form.Field>
           </Form.Group>

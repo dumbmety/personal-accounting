@@ -7,9 +7,15 @@ const Add = () => {
   const [title, setTitle] = useState('')
   const [amount, setAmount] = useState('')
   const [type, setType] = useState('')
-  const [categories, setCategories] = useState('')
+  const [category, setCategory] = useState('')
 
-  const { addRecord, openAddModal, handleCloseAddModal, handleOpenAddModal } = useContext(Context)
+  const {
+    categories: categoriesList,
+    addRecord,
+    openAddModal,
+    handleCloseAddModal,
+    handleOpenAddModal,
+  } = useContext(Context)
 
   return (
     <Modal
@@ -32,12 +38,12 @@ const Add = () => {
               />
             </Form.Field>
             <Form.Field>
-              <label htmlFor="categories">Categories</label>
-              <input
-                id="categories"
-                value={categories}
-                placeholder="Enter categories ..."
-                onChange={e => setCategories(e.target.value)}
+              <label htmlFor="categories">Category</label>
+              <Select
+                placeholder="Choose a Category"
+                value={category}
+                options={categoriesList}
+                onChange={(event, data) => setCategory(data.value)}
               />
             </Form.Field>
           </Form.Group>
@@ -61,9 +67,10 @@ const Add = () => {
                 placeholder="Choose type"
                 value={type}
                 options={[
-                  { key: 'i', value: 'income', text: 'Income', onClick: () => setType('income') },
-                  { key: 'c', value: 'cost', text: 'Cost', onClick: () => setType('cost') },
+                  { key: 'i', value: 'income', text: 'Income' },
+                  { key: 'c', value: 'cost', text: 'Cost' },
                 ]}
+                onChange={(event, data) => setType(data.value)}
               />
             </Form.Field>
           </Form.Group>
@@ -75,7 +82,7 @@ const Add = () => {
           content="Add"
           labelPosition="right"
           icon="add"
-          onClick={() => addRecord({ title, amount, type, categories })}
+          onClick={() => addRecord({ title, amount, type, category })}
           positive
         />
       </Modal.Actions>

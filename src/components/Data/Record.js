@@ -4,7 +4,7 @@ import { Dropdown, Icon, Label, Table } from 'semantic-ui-react'
 import Edit from './Edit'
 import Delete from './Delete'
 
-const Record = ({ id, title, amount, type, categories, createdAt }) => {
+const Record = ({ id, title, amount, type, category, createdAt }) => {
   return (
     <Table.Row>
       <Table.Cell collapsing textAlign="center">
@@ -20,11 +20,9 @@ const Record = ({ id, title, amount, type, categories, createdAt }) => {
         </Label>
       </Table.Cell>
       <Table.Cell collapsing>
-        {categories.map(category => (
-          <Label basic key={category.id} title={category.name} color={category.color}>
-            {category.name}
-          </Label>
-        ))}
+        <Label basic key={category.key} title={category.text} color={category.color}>
+          {category.text}
+        </Label>
       </Table.Cell>
       <Table.Cell collapsing>
         <time dateTime={createdAt} title={createdAt}>

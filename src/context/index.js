@@ -3,6 +3,7 @@ import { createContext } from 'react'
 const context = createContext({
   // data
   data: [],
+  categories: [],
   record: {},
 
   // handler

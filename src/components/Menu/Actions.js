@@ -1,13 +1,12 @@
 import { Button, Icon } from 'semantic-ui-react'
 
+import Filter from './Filter'
+
 const Actions = () => {
   return (
     <div className="header__actions">
       <Button.Group>
-        <Button>
-          <Icon name="filter" />
-          Filter
-        </Button>
+        <Filter />
         <Button>
           <Icon name="sort content descending" />
           Sort

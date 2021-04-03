@@ -9,8 +9,6 @@ import Data from '../components/Data'
 import Heading from '../components/Heading'
 import Menu from '../components/Menu'
 
-import { createCategories } from '../utils'
-
 const App = () => {
   // data state
   const [data, setData] = useState([])
@@ -23,6 +21,14 @@ const App = () => {
   const handleOpenAddModal = () => setOpenAddModal(true)
   const handleCloseAddModal = () => setOpenAddModal(false)
 
+  const categories = [
+    { key: 1, text: 'Shopping', value: 'shopping', icon: 'shop', color: 'violet' },
+    { key: 2, text: 'Health', value: 'health', icon: 'heart', color: 'red' },
+    { key: 3, text: 'Job', value: 'job', icon: 'briefcase', color: 'blue' },
+    { key: 4, text: 'Fax', value: 'fax', icon: 'fax', color: 'black' },
+    { key: 5, text: 'Travel', value: 'travel', icon: 'train', color: 'green' },
+  ]
+
   useEffect(() => {
     setData([
       {
@@ -30,7 +36,7 @@ const App = () => {
         title: 'Online shop project',
         amount: 200,
         type: 'income',
-        categories: [{ id: 1, name: 'freelancing', color: 'pink' }],
+        category: { key: 3, text: 'Job', value: 'job', icon: 'briefcase', color: 'blue' },
         createdAt: '2021-02-06',
       },
       {
@@ -38,7 +44,7 @@ const App = () => {
         title: 'Buy a laptop',
         amount: 1000,
         type: 'cost',
-        categories: [{ id: 1, name: 'apple', color: 'grey' }],
+        category: { key: 1, text: 'Shopping', value: 'shopping', icon: 'shop', color: 'violet' },
         createdAt: '2021-03-15',
       },
     ])
@@ -51,7 +57,7 @@ const App = () => {
     return record
   }
 
-  const handleAddRecord = ({ title, amount, type, categories }) => {
+  const handleAddRecord = ({ title, amount, type, category }) => {
     const allData = [...data]
 
     const record = {
@@ -59,7 +65,7 @@ const App = () => {
       title,
       amount,
       type,
-      categories: createCategories(categories),
+      category,
       createdAt: Date.now(),
     }
 
@@ -75,14 +81,14 @@ const App = () => {
     setData(allData)
   }
 
-  const handleEditRecord = ({ id, title, amount, type, categories }) => {
+  const handleEditRecord = ({ id, title, amount, type, category }) => {
     const allData = [...data]
     const recordIndex = allData.findIndex(r => r.id === id)
     const record = allData[recordIndex]
     record.title = title
     record.amount = amount
     record.type = type
-    record.categories = createCategories(categories)
+    record.category = categories.find(c => c.value === category)
 
     setData(allData)
   }
@@ -90,15 +96,16 @@ const App = () => {
   return (
     <Context.Provider
       value={{
-        data,
-        record,
-        openAddModal,
-        handleOpenAddModal,
-        handleCloseAddModal,
-        getRecord: handleGetRecord,
         addRecord: handleAddRecord,
-        editRecord: handleEditRecord,
+        categories,
+        data,
         deleteRecord: handleDeleteRecord,
+        editRecord: handleEditRecord,
+        getRecord: handleGetRecord,
+        handleCloseAddModal,
+        handleOpenAddModal,
+        openAddModal,
+        record,
       }}
     >
       <SimpleBar style={{ height: '100vh', padding: '5rem' }}>

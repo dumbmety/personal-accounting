@@ -15,7 +15,7 @@ const Data = () => {
           <Table.HeaderCell>Title</Table.HeaderCell>
           <Table.HeaderCell>Amount</Table.HeaderCell>
           <Table.HeaderCell>Type</Table.HeaderCell>
-          <Table.HeaderCell>Categories</Table.HeaderCell>
+          <Table.HeaderCell>Category</Table.HeaderCell>
           <Table.HeaderCell>Created At</Table.HeaderCell>
           <Table.HeaderCell></Table.HeaderCell>
         </Table.Row>
@@ -28,7 +28,7 @@ const Data = () => {
             title={record.title}
             amount={record.amount}
             type={record.type}
-            categories={record.categories}
+            category={record.category}
             createdAt={record.createdAt}
           />
         ))}
