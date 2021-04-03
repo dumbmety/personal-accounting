@@ -1,21 +1,18 @@
 const colorGenerator = () => {
   const colors = [
-    'red',
-    'orange',
-    'yellow',
-    'olive',
-    'green',
-    'teal',
-    'blue',
-    'violet',
-    'purple',
-    'pink',
+    'black',
     'brown',
     'grey',
-    'black',
+    'olive',
+    'orange',
+    'pink',
+    'purple',
+    'teal',
+    'violet',
+    'yellow',
   ]
 
-  const number = Math.floor(Math.random() * 13)
+  const number = Math.floor(Math.random() * 10)
   return colors[number]
 }
 
