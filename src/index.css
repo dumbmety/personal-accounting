@@ -1,12 +1,16 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700;800&display=swap');
 
 body {
-  padding: 5rem 0;
   background: #f3f4f6;
   font-family: 'Poppins' !important;
 }
 button {
   font-weight: 600 !important;
+  font-family: inherit !important;
+}
+
+.header,
+.form input {
   font-family: inherit !important;
 }
 

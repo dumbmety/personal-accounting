@@ -1,5 +1,5 @@
 import { useContext, useState } from 'react'
-import { Button, Form, Input, Label, Modal, Select } from 'semantic-ui-react'
+import { Button, Dropdown, Form, Icon, Input, Label, Modal, Select } from 'semantic-ui-react'
 
 import Context from '../../context'
 
@@ -31,7 +31,12 @@ const Edit = ({ id }) => {
       onClose={handleCloseEditModal}
       onOpen={handleOpenEditModal}
       open={openEditModal}
-      trigger={<Button icon="edit" color="green" />}
+      trigger={
+        <Dropdown.Item>
+          <Icon color="grey" name="edit" />
+          Edit
+        </Dropdown.Item>
+      }
     >
       <Modal.Header>Edit Record</Modal.Header>
       <Modal.Content>

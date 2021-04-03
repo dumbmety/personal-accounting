@@ -101,7 +101,7 @@ const App = () => {
         deleteRecord: handleDeleteRecord,
       }}
     >
-      <SimpleBar>
+      <SimpleBar style={{ height: '100vh', padding: '5rem' }}>
         <Container>
           <Heading />
           <Menu />

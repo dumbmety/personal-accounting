@@ -17,7 +17,7 @@ const Data = () => {
           <Table.HeaderCell>Type</Table.HeaderCell>
           <Table.HeaderCell>Categories</Table.HeaderCell>
           <Table.HeaderCell>Created At</Table.HeaderCell>
-          <Table.HeaderCell>Actions</Table.HeaderCell>
+          <Table.HeaderCell></Table.HeaderCell>
         </Table.Row>
       </Table.Header>
       <Table.Body>

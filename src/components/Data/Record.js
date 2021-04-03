@@ -1,5 +1,5 @@
 import moment from 'moment'
-import { Label, Table } from 'semantic-ui-react'
+import { Dropdown, Icon, Label, Table } from 'semantic-ui-react'
 
 import Edit from './Edit'
 import Delete from './Delete'
@@ -32,8 +32,20 @@ const Record = ({ id, title, amount, type, categories, createdAt }) => {
         </time>
       </Table.Cell>
       <Table.Cell collapsing>
-        <Edit id={id} />
-        <Delete id={id} title={title} />
+        <Dropdown
+          pointing="top right"
+          trigger={
+            <div>
+              <Icon color="grey" name="ellipsis vertical" />
+            </div>
+          }
+          icon={null}
+        >
+          <Dropdown.Menu>
+            <Edit id={id} />
+            <Delete id={id} title={title} />
+          </Dropdown.Menu>
+        </Dropdown>
       </Table.Cell>
     </Table.Row>
   )

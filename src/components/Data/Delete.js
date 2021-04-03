@@ -1,5 +1,5 @@
 import { useContext, useState } from 'react'
-import { Button, Modal } from 'semantic-ui-react'
+import { Dropdown, Icon, Modal } from 'semantic-ui-react'
 
 import Context from '../../context'
 
@@ -17,7 +17,12 @@ const Delete = ({ id, title }) => {
       onOpen={handleOpenDeleteModal}
       open={openDeleteModal}
       size="tiny"
-      trigger={<Button onClick={handleOpenDeleteModal} icon="delete" color="red" />}
+      trigger={
+        <Dropdown.Item onClick={handleOpenDeleteModal}>
+          <Icon color="grey" name="trash" />
+          Delete
+        </Dropdown.Item>
+      }
       header="Are you sure?"
       content={`Are you sure to want delete "${title}" record?`}
       actions={[
