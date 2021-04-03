@@ -4,14 +4,16 @@ const createCategories = categoryList => {
   const categories = []
 
   try {
-    // eslint-disable-next-line
-    categoryList.split(',').map(category => {
-      categories.push({
-        id: categories.length,
-        name: category,
-        color: colorGenerator(),
+    if (typeof categoryList === 'string') {
+      // eslint-disable-next-line
+      categoryList.split(',').map(category => {
+        categories.push({
+          id: categories.length,
+          name: category,
+          color: colorGenerator(),
+        })
       })
-    })
+    }
   } catch (err) {
     categories.push({
       id: categories.length,

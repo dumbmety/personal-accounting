@@ -18,7 +18,6 @@ const Edit = ({ id }) => {
   const handleCloseEditModal = () => setOpenEditModal(false)
 
   const handleSubmitModal = () => {
-    debugger
     editRecord({ id, title, amount, type, categories })
     setOpenEditModal(false)
   }

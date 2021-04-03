@@ -82,11 +82,6 @@ const App = () => {
     record.title = title
     record.amount = amount
     record.type = type
-
-    debugger
-    console.log(record.categories)
-    console.log(categories)
-
     record.categories = createCategories(categories)
 
     setData(allData)
