@@ -8,7 +8,9 @@ const Filter = () => {
   const { categories, filteredData } = useContext(Context)
 
   useEffect(() => {
+    // eslint-disable-next-line
     filteredData(filter)
+    // eslint-disable-next-line
   }, [filter])
 
   return (
