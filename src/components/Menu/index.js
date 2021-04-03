@@ -1,11 +1,11 @@
 import Actions from './Actions'
 import Add from './Add'
 
-const Menu = () => {
+const Menu = ({ id }) => {
   return (
     <section id="main-menu">
       <Actions />
-      <Add />
+      <Add id={id} />
     </section>
   )
 }
