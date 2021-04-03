@@ -1,22 +1,24 @@
-import { useContext } from 'react'
-import { Button, Dropdown, Icon } from 'semantic-ui-react'
+import { useContext, useEffect, useState } from 'react'
+import { Button, Dropdown } from 'semantic-ui-react'
 
 import Context from '../../context'
 
 const Filter = () => {
-  const { categories } = useContext(Context)
+  const [filter, setFilter] = useState('all')
+  const { categories, filteredData } = useContext(Context)
+
+  useEffect(() => {
+    filteredData(filter)
+  }, [filter])
 
   return (
-    <Dropdown pointing="top" trigger={<Button icon="filter" content="Filter" />} icon={null}>
-      <Dropdown.Menu>
-        {categories.map(category => (
-          <Dropdown.Item key={category.key} style={{ display: 'flex' }}>
-            <Icon name={category.icon} color={category.color} />
-            {category.text}
-          </Dropdown.Item>
-        ))}
-      </Dropdown.Menu>
-    </Dropdown>
+    <Dropdown
+      pointing="top"
+      trigger={<Button active={filter !== 'all'} icon="filter" content="Filter" />}
+      icon={null}
+      options={categories}
+      onChange={(e, data) => setFilter(data.value)}
+    />
   )
 }
 

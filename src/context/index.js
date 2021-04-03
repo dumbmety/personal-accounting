@@ -3,10 +3,11 @@ import { createContext } from 'react'
 const context = createContext({
   // data
   data: [],
+  filter: '',
   categories: [],
-  record: {},
 
   // handler
+  filteredData: () => {},
   getRecord: () => {},
   addRecord: () => {},
   editRecord: () => {},

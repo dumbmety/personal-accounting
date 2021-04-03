@@ -10,23 +10,20 @@ import Heading from '../components/Heading'
 import Menu from '../components/Menu'
 
 const App = () => {
-  // data state
   const [data, setData] = useState([])
-  const [record] = useState({})
-
-  // modal state
+  const [filteredData, setFilteredData] = useState([])
   const [openAddModal, setOpenAddModal] = useState(false)
 
-  // modal handler
   const handleOpenAddModal = () => setOpenAddModal(true)
   const handleCloseAddModal = () => setOpenAddModal(false)
 
   const categories = [
-    { key: 1, text: 'Shopping', value: 'shopping', icon: 'shop', color: 'violet' },
-    { key: 2, text: 'Health', value: 'health', icon: 'heart', color: 'red' },
-    { key: 3, text: 'Job', value: 'job', icon: 'briefcase', color: 'blue' },
-    { key: 4, text: 'Fax', value: 'fax', icon: 'fax', color: 'black' },
-    { key: 5, text: 'Travel', value: 'travel', icon: 'train', color: 'green' },
+    { key: 0, text: 'All', value: 'all' },
+    { key: 1, text: 'Shopping', value: 'shopping' },
+    { key: 2, text: 'Health', value: 'health' },
+    { key: 3, text: 'Job', value: 'job' },
+    { key: 4, text: 'Fax', value: 'fax' },
+    { key: 5, text: 'Travel', value: 'travel' },
   ]
 
   useEffect(() => {
@@ -93,19 +90,26 @@ const App = () => {
     setData(allData)
   }
 
+  const handleFilter = category => {
+    const allData = [...data]
+    const filteredData = allData.filter(d => d.category.value === category)
+
+    setFilteredData(filteredData)
+  }
+
   return (
     <Context.Provider
       value={{
-        addRecord: handleAddRecord,
+        data: filteredData.length ? filteredData : data,
         categories,
-        data,
+        filteredData: handleFilter,
+        addRecord: handleAddRecord,
         deleteRecord: handleDeleteRecord,
         editRecord: handleEditRecord,
         getRecord: handleGetRecord,
         handleCloseAddModal,
         handleOpenAddModal,
         openAddModal,
-        record,
       }}
     >
       <SimpleBar style={{ height: '100vh', padding: '5rem' }}>
