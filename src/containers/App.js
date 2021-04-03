@@ -16,7 +16,7 @@ import { createCategories } from '../utils'
 const App = () => {
   // data state
   const [data, setData] = useState([])
-  const [record, ] = useState({})
+  const [record] = useState({})
 
   // modal state
   const [openDeleteModal, setOpenDeleteModal] = useState(false)
@@ -30,7 +30,6 @@ const App = () => {
       {
         id: 1,
         title: 'Online shop project',
-        description: 'Added new features',
         amount: 200,
         type: 'income',
         categories: [{ id: 1, name: 'freelancing', color: 'pink' }],
@@ -39,7 +38,6 @@ const App = () => {
       {
         id: 2,
         title: 'Buy a laptop',
-        description: 'A new macbook air with M1 chip',
         amount: 1000,
         type: 'cost',
         categories: [{ id: 1, name: 'apple', color: 'grey' }],
@@ -55,7 +53,6 @@ const App = () => {
     const newRecord = {
       id: allData.length + 1,
       title: record.title,
-      description: record.description,
       amount: record.amount,
       type: record.type,
       categories: createCategories(record.categories),

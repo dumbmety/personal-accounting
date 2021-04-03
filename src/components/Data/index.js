@@ -13,7 +13,6 @@ const Data = () => {
         <Table.Row>
           <Table.HeaderCell>#</Table.HeaderCell>
           <Table.HeaderCell>Title</Table.HeaderCell>
-          <Table.HeaderCell>Description</Table.HeaderCell>
           <Table.HeaderCell>Amount</Table.HeaderCell>
           <Table.HeaderCell>Type</Table.HeaderCell>
           <Table.HeaderCell>Categories</Table.HeaderCell>
@@ -27,7 +26,6 @@ const Data = () => {
             key={record.id}
             id={record.id}
             title={record.title}
-            description={record.description}
             amount={record.amount}
             type={record.type}
             categories={record.categories}

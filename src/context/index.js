@@ -10,6 +10,11 @@ const context = createContext({
   editRecord: () => {},
   deleteRecord: () => {},
 
+  // modals [edit]
+  openEditModal: false,
+  handleOpenEditModal: () => {},
+  handleCloseEditModal: () => {},
+
   // modals [delete]
   openDeleteModal: false,
   handleOpenDeleteModal: () => {},
