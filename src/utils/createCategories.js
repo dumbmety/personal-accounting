@@ -3,14 +3,22 @@ import colorGenerator from './colorGenerator'
 const createCategories = categoryList => {
   const categories = []
 
-  // eslint-disable-next-line
-  categoryList.split(',').map(category => {
+  try {
+    // eslint-disable-next-line
+    categoryList.split(',').map(category => {
+      categories.push({
+        id: categories.length,
+        name: category,
+        color: colorGenerator(),
+      })
+    })
+  } catch (err) {
     categories.push({
       id: categories.length,
-      name: category,
+      name: categoryList[0],
       color: colorGenerator(),
     })
-  })
+  }
 
   return categories
 }

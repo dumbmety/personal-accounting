@@ -75,8 +75,21 @@ const App = () => {
     setData(allData)
   }
 
-  const handleEditRecord = id => {
-    alert('edit')
+  const handleEditRecord = ({ id, title, amount, type, categories }) => {
+    const allData = [...data]
+    const recordIndex = allData.findIndex(r => r.id === id)
+    const record = allData[recordIndex]
+    record.title = title
+    record.amount = amount
+    record.type = type
+
+    debugger
+    console.log(record.categories)
+    console.log(categories)
+
+    record.categories = createCategories(categories)
+
+    setData(allData)
   }
 
   return (

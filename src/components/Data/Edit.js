@@ -1,5 +1,5 @@
 import { useContext, useState } from 'react'
-import { Button, Form, Input, Label, Modal, Select, TextArea } from 'semantic-ui-react'
+import { Button, Form, Input, Label, Modal, Select } from 'semantic-ui-react'
 
 import Context from '../../context'
 
@@ -16,6 +16,12 @@ const Edit = ({ id }) => {
 
   const handleOpenEditModal = () => setOpenEditModal(true)
   const handleCloseEditModal = () => setOpenEditModal(false)
+
+  const handleSubmitModal = () => {
+    debugger
+    editRecord({ id, title, amount, type, categories })
+    setOpenEditModal(false)
+  }
 
   if (typeof categories !== 'string') {
     categories = categories.map(category => category.name)
@@ -82,10 +88,10 @@ const Edit = ({ id }) => {
       <Modal.Actions>
         <Button onClick={handleCloseEditModal}>Cancel</Button>
         <Button
-          content="Add"
+          content="Edit"
           labelPosition="right"
-          icon="add"
-          onClick={() => editRecord(id)}
+          icon="edit"
+          onClick={handleSubmitModal}
           positive
         />
       </Modal.Actions>
