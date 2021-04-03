@@ -9,6 +9,11 @@ const context = createContext({
   addRecord: () => {},
   editRecord: () => {},
   deleteRecord: () => {},
+
+  // modals
+  openAddModal: false,
+  handleOpenAddModal: () => {},
+  handleCloseAddModal: () => {},
 })
 
 export default context

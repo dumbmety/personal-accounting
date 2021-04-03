@@ -4,14 +4,18 @@ import { Button, Form, Input, Label, Modal, Select, TextArea } from 'semantic-ui
 import Context from '../../context'
 
 const Add = () => {
-  const [open, setOpen] = useState(false)
-  const { addRecord } = useContext(Context)
+  const [title, setTitle] = useState('')
+  const [amount, setAmount] = useState('')
+  const [type, setType] = useState('')
+  const [categories, setCategories] = useState('')
+
+  const { addRecord, openAddModal, handleCloseAddModal, handleOpenAddModal } = useContext(Context)
 
   return (
     <Modal
-      onClose={() => setOpen(false)}
-      onOpen={() => setOpen(true)}
-      open={open}
+      onClose={handleCloseAddModal}
+      onOpen={handleOpenAddModal}
+      open={openAddModal}
       trigger={<Button content="Add record" icon="add" color="blue" />}
     >
       <Modal.Header>Add new Record</Modal.Header>
@@ -20,11 +24,21 @@ const Add = () => {
           <Form.Group widths="equal">
             <Form.Field>
               <label htmlFor="title">Title</label>
-              <input id="title" placeholder="Enter title ..." />
+              <input
+                id="title"
+                value={title}
+                placeholder="Enter title ..."
+                onChange={e => setTitle(e.target.value)}
+              />
             </Form.Field>
             <Form.Field>
-              <label htmlFor="description">Description</label>
-              <input id="description" placeholder="Enter description ..." />
+              <label htmlFor="categories">Categories</label>
+              <input
+                id="categories"
+                value={categories}
+                placeholder="Enter categories ..."
+                onChange={e => setCategories(e.target.value)}
+              />
             </Form.Field>
           </Form.Group>
           <Form.Group widths="equal">
@@ -32,7 +46,12 @@ const Add = () => {
               <label htmlFor="amount">Amount</label>
               <Input labelPosition="right" type="text" placeholder="Amount">
                 <Label basic>$</Label>
-                <input id="amount" />
+                <input
+                  id="amount"
+                  type="number"
+                  value={amount}
+                  onChange={e => setAmount(e.target.value)}
+                />
                 <Label>.00</Label>
               </Input>
             </Form.Field>
@@ -40,22 +59,25 @@ const Add = () => {
               <label>Type</label>
               <Select
                 placeholder="Choose type"
+                value={type}
                 options={[
-                  { key: 'i', value: 'income', text: 'Income' },
-                  { key: 'c', value: 'cost', text: 'Cost' },
+                  { key: 'i', value: 'income', text: 'Income', onClick: () => setType('income') },
+                  { key: 'c', value: 'cost', text: 'Cost', onClick: () => setType('cost') },
                 ]}
               />
             </Form.Field>
           </Form.Group>
-          <Form.Field>
-            <label htmlFor="categories">Categories</label>
-            <TextArea id="categories" placeholder="Separate categories with commas" />
-          </Form.Field>
         </Form>
       </Modal.Content>
       <Modal.Actions>
-        <Button onClick={() => setOpen(false)}>Cancel</Button>
-        <Button content="Add" labelPosition="right" icon="add" onClick={addRecord} positive />
+        <Button onClick={handleCloseAddModal}>Cancel</Button>
+        <Button
+          content="Add"
+          labelPosition="right"
+          icon="add"
+          onClick={() => addRecord({ title, amount, type, categories })}
+          positive
+        />
       </Modal.Actions>
     </Modal>
   )

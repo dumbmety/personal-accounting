@@ -12,8 +12,16 @@ import Menu from '../components/Menu'
 import { createCategories } from '../utils'
 
 const App = () => {
+  // data state
   const [data, setData] = useState([])
   const [record] = useState({})
+
+  // modal state
+  const [openAddModal, setOpenAddModal] = useState(false)
+
+  // modal handler
+  const handleOpenAddModal = () => setOpenAddModal(true)
+  const handleCloseAddModal = () => setOpenAddModal(false)
 
   useEffect(() => {
     setData([
@@ -36,20 +44,21 @@ const App = () => {
     ])
   }, [])
 
-  const handleAddRecord = record => {
+  const handleAddRecord = ({ title, amount, type, categories }) => {
     const allData = [...data]
 
-    const newRecord = {
+    const record = {
       id: allData.length + 1,
-      title: record.title,
-      amount: record.amount,
-      type: record.type,
-      categories: createCategories(record.categories),
+      title,
+      amount,
+      type,
+      categories: createCategories(categories),
       createdAt: Date.now(),
     }
 
-    allData.push(newRecord)
+    allData.push(record)
     setData(allData)
+    setOpenAddModal(false)
   }
 
   const handleDeleteRecord = id => {
@@ -68,6 +77,9 @@ const App = () => {
       value={{
         data,
         record,
+        openAddModal,
+        handleOpenAddModal,
+        handleCloseAddModal,
         addRecord: handleAddRecord,
         editRecord: handleEditRecord,
         deleteRecord: handleDeleteRecord,
