@@ -8,10 +8,6 @@ const Actions = () => {
       <Button.Group>
         <Filter />
         <Button>
-          <Icon name="sort content descending" />
-          Sort
-        </Button>
-        <Button>
           <Icon name="search" />
           Search
         </Button>
