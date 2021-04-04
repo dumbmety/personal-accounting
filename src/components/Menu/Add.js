@@ -17,6 +17,14 @@ const Add = () => {
     handleOpenAddModal,
   } = useContext(Context)
 
+  const handleSubmitForm = () => {
+    addRecord({ title, amount, type, category })
+    setTitle('')
+    setAmount('')
+    setType('')
+    setCategory('')
+  }
+
   return (
     <Modal
       onClose={handleCloseAddModal}
@@ -82,7 +90,7 @@ const Add = () => {
           content="Add"
           labelPosition="right"
           icon="add"
-          onClick={() => addRecord({ title, amount, type, category })}
+          onClick={handleSubmitForm}
           positive
         />
       </Modal.Actions>
