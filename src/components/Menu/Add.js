@@ -67,8 +67,8 @@ const Add = () => {
                 placeholder="Choose type"
                 value={type}
                 options={[
-                  { key: 'i', value: 'income', text: 'Income' },
-                  { key: 'c', value: 'cost', text: 'Cost' },
+                  { key: 'i', value: 'Income', text: 'Income' },
+                  { key: 'c', value: 'Cost', text: 'Cost' },
                 ]}
                 onChange={(event, data) => setType(data.value)}
               />

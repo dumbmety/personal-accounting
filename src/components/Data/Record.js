@@ -15,7 +15,7 @@ const Record = ({ id, title, amount, type, category, createdAt }) => {
         ${amount}
       </Table.Cell>
       <Table.Cell collapsing>
-        <Label title={type} basic color={type === 'income' ? 'green' : 'red'}>
+        <Label title={type} basic color={type === 'Income' ? 'green' : 'red'}>
           {type}
         </Label>
       </Table.Cell>
