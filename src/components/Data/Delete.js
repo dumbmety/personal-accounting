@@ -1,15 +1,14 @@
-import { useContext, useState } from 'react'
-import { Dropdown, Icon, Modal } from 'semantic-ui-react'
+import { useState } from 'react';
+import { Dropdown, Icon, Modal } from 'semantic-ui-react';
+import { useDataHandler } from '../../provider';
 
-import Context from '../../context'
+export default function Delete({ id, title }) {
+  const [openDeleteModal, setOpenDeleteModal] = useState(false);
 
-const Delete = ({ id, title }) => {
-  const [openDeleteModal, setOpenDeleteModal] = useState(false)
+  const handleOpenDeleteModal = () => setOpenDeleteModal(true);
+  const handleCloseDeleteModal = () => setOpenDeleteModal(false);
 
-  const handleOpenDeleteModal = () => setOpenDeleteModal(true)
-  const handleCloseDeleteModal = () => setOpenDeleteModal(false)
-
-  const { deleteRecord } = useContext(Context)
+  const { deleteRecord } = useDataHandler();
 
   return (
     <Modal
@@ -35,7 +34,5 @@ const Delete = ({ id, title }) => {
         },
       ]}
     />
-  )
+  );
 }
-
-export default Delete

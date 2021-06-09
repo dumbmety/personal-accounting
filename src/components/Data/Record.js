@@ -1,10 +1,17 @@
-import moment from 'moment'
-import { Dropdown, Icon, Label, Table } from 'semantic-ui-react'
+import moment from 'moment';
+import { Dropdown, Icon, Label, Table } from 'semantic-ui-react';
 
-import Edit from './Edit'
-import Delete from './Delete'
+import Edit from './Edit';
+import Delete from './Delete';
 
-const Record = ({ id, title, amount, type, category, createdAt }) => {
+export default function Record({
+  id,
+  title,
+  amount,
+  type,
+  category,
+  createdAt,
+}) {
   return (
     <Table.Row>
       <Table.Cell collapsing textAlign="center">
@@ -20,7 +27,12 @@ const Record = ({ id, title, amount, type, category, createdAt }) => {
         </Label>
       </Table.Cell>
       <Table.Cell collapsing>
-        <Label basic key={category.key} title={category.text} color={category.color}>
+        <Label
+          basic
+          key={category.key}
+          title={category.text}
+          color={category.color}
+        >
           {category.text}
         </Label>
       </Table.Cell>
@@ -46,7 +58,5 @@ const Record = ({ id, title, amount, type, category, createdAt }) => {
         </Dropdown>
       </Table.Cell>
     </Table.Row>
-  )
+  );
 }
-
-export default Record

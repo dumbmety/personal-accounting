@@ -1,8 +1,7 @@
-import { Button, Icon } from 'semantic-ui-react'
+import { Button, Icon } from 'semantic-ui-react';
+import Filter from './Filter';
 
-import Filter from './Filter'
-
-const Actions = () => {
+export default function Actions() {
   return (
     <div className="header__actions">
       <Button.Group>
@@ -13,7 +12,5 @@ const Actions = () => {
         </Button>
       </Button.Group>
     </div>
-  )
+  );
 }
-
-export default Actions

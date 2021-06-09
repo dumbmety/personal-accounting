@@ -1,26 +1,34 @@
-import { useContext, useState } from 'react'
-import { Button, Dropdown, Form, Icon, Input, Label, Modal, Select } from 'semantic-ui-react'
+import { useState } from 'react';
+import {
+  Button,
+  Dropdown,
+  Form,
+  Icon,
+  Input,
+  Label,
+  Modal,
+  Select,
+} from 'semantic-ui-react';
+import { useDataHandler } from '../../provider';
 
-import Context from '../../context'
+export default function Edit({ id }) {
+  const { categories, getRecord, editRecord } = useDataHandler();
+  const record = getRecord(id);
 
-const Edit = ({ id }) => {
-  const { categories, getRecord, editRecord } = useContext(Context)
-  const record = getRecord(id)
+  const [title, setTitle] = useState(record.title);
+  const [amount, setAmount] = useState(record.amount);
+  const [type, setType] = useState(record.type);
+  const [category, setCategory] = useState(record.category.value);
 
-  const [title, setTitle] = useState(record.title)
-  const [amount, setAmount] = useState(record.amount)
-  const [type, setType] = useState(record.type)
-  const [category, setCategory] = useState(record.category.value)
+  const [openEditModal, setOpenEditModal] = useState(false);
 
-  const [openEditModal, setOpenEditModal] = useState(false)
-
-  const handleOpenEditModal = () => setOpenEditModal(true)
-  const handleCloseEditModal = () => setOpenEditModal(false)
+  const handleOpenEditModal = () => setOpenEditModal(true);
+  const handleCloseEditModal = () => setOpenEditModal(false);
 
   const handleSubmitModal = () => {
-    editRecord({ id, title, amount, type, category })
-    setOpenEditModal(false)
-  }
+    editRecord({ id, title, amount, type, category });
+    setOpenEditModal(false);
+  };
 
   return (
     <Modal
@@ -97,7 +105,5 @@ const Edit = ({ id }) => {
         />
       </Modal.Actions>
     </Modal>
-  )
+  );
 }
-
-export default Edit

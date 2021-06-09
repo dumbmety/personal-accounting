@@ -1,13 +1,12 @@
-import { useContext, useState } from 'react'
-import { Button, Form, Input, Label, Modal, Select } from 'semantic-ui-react'
+import { useState } from 'react';
+import { Button, Form, Input, Label, Modal, Select } from 'semantic-ui-react';
+import { useDataHandler } from '../../provider';
 
-import Context from '../../context'
-
-const Add = () => {
-  const [title, setTitle] = useState('')
-  const [amount, setAmount] = useState('')
-  const [type, setType] = useState('')
-  const [category, setCategory] = useState('')
+export default function Add() {
+  const [title, setTitle] = useState('');
+  const [amount, setAmount] = useState('');
+  const [type, setType] = useState('');
+  const [category, setCategory] = useState('');
 
   const {
     categories: categoriesList,
@@ -15,15 +14,15 @@ const Add = () => {
     openAddModal,
     handleCloseAddModal,
     handleOpenAddModal,
-  } = useContext(Context)
+  } = useDataHandler();
 
   const handleSubmitForm = () => {
-    addRecord({ title, amount, type, category })
-    setTitle('')
-    setAmount('')
-    setType('')
-    setCategory('')
-  }
+    addRecord({ title, amount, type, category });
+    setTitle('');
+    setAmount('');
+    setType('');
+    setCategory('');
+  };
 
   return (
     <Modal
@@ -95,7 +94,5 @@ const Add = () => {
         />
       </Modal.Actions>
     </Modal>
-  )
+  );
 }
-
-export default Add

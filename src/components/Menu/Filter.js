@@ -1,27 +1,16 @@
-import { useContext, useEffect, useState } from 'react'
-import { Button, Dropdown } from 'semantic-ui-react'
+import { Button, Dropdown } from 'semantic-ui-react';
+import { useDataHandler } from '../../provider';
 
-import Context from '../../context'
-
-const Filter = () => {
-  const [filter, setFilter] = useState('all')
-  const { categories, filteredData } = useContext(Context)
-
-  useEffect(() => {
-    // eslint-disable-next-line
-    filteredData(filter)
-    // eslint-disable-next-line
-  }, [filter])
-
+export default function Filter() {
+  const { categories, filter, changeFilter } = useDataHandler();
   return (
     <Dropdown
-      pointing="top"
-      trigger={<Button active={filter !== 'all'} icon="filter" content="Filter" />}
       icon={null}
+      pointing="top"
       options={categories}
-      onChange={(e, data) => setFilter(data.value)}
+      defaultValue={filter}
+      trigger={<Button icon="filter" content="Filter" />}
+      onChange={(event, data) => changeFilter(data.value)}
     />
-  )
+  );
 }
-
-export default Filter

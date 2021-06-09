@@ -4,23 +4,21 @@ body {
   background: #f3f4f6;
   font-family: 'Poppins' !important;
 }
+
 button {
   font-weight: 600 !important;
-  font-family: inherit !important;
-}
-
-.header,
-.form input {
   font-family: inherit !important;
 }
 
 #main-header {
   margin-bottom: 1.25rem;
 }
+
 #main-header h1 {
   font-size: 3rem;
   font-family: inherit;
 }
+
 #main-header p {
   font-family: inherit;
 }
