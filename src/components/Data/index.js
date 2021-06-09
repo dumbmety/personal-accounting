@@ -5,15 +5,32 @@ import { useDataHandler } from '../../provider';
 import Record from './Record';
 
 export default function Data() {
-  const { data, filter } = useDataHandler();
+  const { data, filter, search } = useDataHandler();
   const [filteredData, setFilteredData] = useState(data);
 
   useEffect(() => {
-    if (filter === 'all') return setFilteredData(data);
+    if (search) {
+      const filteredData = data.filter(r => r.title.includes(search));
+
+      if (filteredData) {
+        return setFilteredData(filteredData);
+      }
+
+      return setFilteredData(null);
+    }
+
+    if (filter === 'all') {
+      return setFilteredData(data);
+    }
+
     const filteredData = data.filter(r => r.category.value === filter);
-    if (!filteredData) return setFilteredData(null);
+
+    if (!filteredData) {
+      return setFilteredData(null);
+    }
+
     setFilteredData(filteredData);
-  }, [data, filter]);
+  }, [data, filter, search]);
 
   return (
     <Table celled>

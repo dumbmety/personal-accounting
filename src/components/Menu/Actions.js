@@ -1,15 +1,14 @@
-import { Button, Icon } from 'semantic-ui-react';
+import { Button } from 'semantic-ui-react';
+
 import Filter from './Filter';
+import Search from './Search';
 
 export default function Actions() {
   return (
     <div className="header__actions">
       <Button.Group>
         <Filter />
-        <Button>
-          <Icon name="search" />
-          Search
-        </Button>
+        <Search />
       </Button.Group>
     </div>
   );

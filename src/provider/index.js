@@ -34,6 +34,7 @@ export const initialValue = {
     },
   ],
   filter: 'all',
+  search: '',
   categories: [],
 };
 
@@ -41,6 +42,7 @@ export const Context = createContext(initialValue);
 
 export const Provider = ({ children }) => {
   const [data, setData] = useState(initialValue.data);
+  const [search, setSearch] = useState(initialValue.search);
   const [filter, setFilter] = useState(initialValue.filter);
   const [openAddModal, setOpenAddModal] = useState(false);
 
@@ -94,12 +96,18 @@ export const Provider = ({ children }) => {
     setData(allData);
   }
 
+  function changeSearch(value) {
+    setSearch(value);
+  }
+
   return (
     <Context.Provider
       children={children}
       value={{
         addRecord,
         categories,
+        search,
+        changeSearch,
         data,
         deleteRecord,
         editRecord,
